@@ -5,6 +5,7 @@
 	<title>Main Screen</title>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="src/js/main.js"> </script>
 </head>
 <style>
 	
@@ -49,18 +50,31 @@
 
 </body>
 <script>
-    var isNewZealand = {
-        'Central Pulse': true,
-        'Queensland Firebirds': false,
-        'Northern Mystics': true,
-        'Waikato Bay of Plenty Magic': true,
-        'New South Wales Swifts': false,
-        'Canterbury Tactix': true,
-        'Melbourne Vixens': false,
-        'West Coast Fever': false,
-        'Adelaide Thunderbirds': false,
-        'Southern Steel': true
-    }
+    // var isNewZealand = {
+    //     'Central Pulse',
+    //     // 'Queensland Firebirds': false,
+    //     'Northern Mystics',
+    //     'Waikato Bay of Plenty Magic',
+    //     // 'New South Wales Swifts': false,
+    //     'Canterbury Tactix',
+    //     // 'Melbourne Vixens': false,
+    //     // 'West Coast Fever': false,
+    //     // 'Adelaide Thunderbirds': false,
+    //     'Southern Steel'
+    // }
+
+    var teams = [{ name: "Central Pulse", location: "New Zealand"},
+                 { name: "Queensland Firebirds", location: "Australia"},
+                 { name: "Northern Mystics", location: "New Zealand"},
+                 { name: "Waikato Bay of Plenty Magic", location: "New Zealand"},
+                 { name: "New South Wales Swifts", location: "Australia"},
+                 { name: "Canterbury Tactix", location: "New Zealand"},
+                 { name: "Melbourne Vixens", location: "Australia"},
+                 { name: "West Coast Fever", location: "Australia"},
+                 { name: "Adelaide Thunderbirds", location: "Australia"},
+                 { name: "Southern Steel", location: "New Zealand"}];
+
+    meow(teams);
 
     var listTeams = ['Central Pulse', 'Queensland Firebirds', 'Northern Mystics', 'Waikato Bay of Plenty Magic', 'New South Wales Swifts', 'Canterbury Tactix', 'Melbourne Vixens', 'West Coast Fever', 'Adelaide Thunderbirds', 'Southern Steel']
 
