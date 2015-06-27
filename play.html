@@ -6,29 +6,30 @@
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="src/js/main.js"> </script>
-</head>
-<style>
-	
-	#barChart div {
-  		font: 10px sans-serif;
-  		background-color: steelblue;
-  		text-align: right;
-  		padding: 3px;
-  		margin: 1px;
-  		color: white;
-	}
+    <script src="convertedData.js"> </script>
+    <style>
+    
+    #barChart div {
+        font: 10px sans-serif;
+        background-color: steelblue;
+        text-align: right;
+        padding: 3px;
+        margin: 1px;
+        color: white;
+    }
 
-	.axis path,
+    .axis path,
     .axis line{
         fill: none;
         stroke: #000;
     }
     
     .axis text {
-    	font-family: sans-serif;
+        font-family: sans-serif;
         font-size: 12px;
     }
 </style>
+</head>
 
 <body>
 	<div id="topRow">
@@ -50,18 +51,6 @@
 
 </body>
 <script>
-    // var isNewZealand = {
-    //     'Central Pulse',
-    //     // 'Queensland Firebirds': false,
-    //     'Northern Mystics',
-    //     'Waikato Bay of Plenty Magic',
-    //     // 'New South Wales Swifts': false,
-    //     'Canterbury Tactix',
-    //     // 'Melbourne Vixens': false,
-    //     // 'West Coast Fever': false,
-    //     // 'Adelaide Thunderbirds': false,
-    //     'Southern Steel'
-    // }
 
     var teams = [{ name: "Central Pulse", location: "New Zealand"},
                  { name: "Queensland Firebirds", location: "Australia"},
@@ -74,12 +63,7 @@
                  { name: "Adelaide Thunderbirds", location: "Australia"},
                  { name: "Southern Steel", location: "New Zealand"}];
 
-
-    // var listTeams = ['Central Pulse', 'Queensland Firebirds', 'Northern Mystics', 'Waikato Bay of Plenty Magic', 'New South Wales Swifts', 'Canterbury Tactix', 'Melbourne Vixens', 'West Coast Fever', 'Adelaide Thunderbirds', 'Southern Steel']
-
-    var seasons = [2008, 2009, 2010, 2011, 2012, 2013];
-
-    var colors = ["SlateGrey", "#CD7F32", "Silver", "Gold"]
+    var colors = ["SlateGrey", "#CD7F32", "Silver", "Gold"];
 
     var data2008 = [{
         "round": "1",
@@ -283,7 +267,7 @@
     "venue":"Trafalgar Centre"
   }];
 
-    meow(data2008, isNZ(teams));
+    meow(newData[0].concat(newData[1], newData[2], newData[3], newData[4], newData[5]), teams);
 
   	var data = data2008;
   	/*

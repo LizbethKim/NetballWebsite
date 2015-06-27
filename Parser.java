@@ -1,22 +1,21 @@
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
- * A parser to process files that were given out in the SWEN303 d3.js assignment. 
+ * A parser to process files that were given out in the SWEN303 d3.js assignment.
  * Converts csv files into a format that is uniform between files, and easier to process.
- * 
+ *
  * @author Pauline Kelly
  */
 public class Parser {
+	
+	private String total = "var newData = [[";
 
 	private String [] csvFiles = {
 			"2008-Table1.csv",
@@ -43,43 +42,40 @@ public class Parser {
 			try {
 				Scanner scanner = new Scanner(new File(file));
 
-				//Write to the file depending on the specifics of the file
-				try {
-					Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("converted"+file)));
+				//Throw away header information
+				scanner.nextLine();
+				String header = "round,day,dayNumber,month,homeTeam,homeTeamScore,awayTeamScore,awayTeam,venue\n";
 
-					//Throw away header information
-					scanner.nextLine();
-					String header = "round,day,dayNumber,month,homeTeam,homeTeamScore,awayTeamScore,awayTeam,venue\n";
-					writer.write(header);
-
-					if(file.contains("2008")){
-						parse2008(scanner, writer);
-					}
-					else if(file.contains("2009")){
-						parse2009(scanner, writer);
-					}
-					else {
-						System.out.println("starting: " + file);
-						parseOther(scanner,writer);
-						System.out.println("finished" + file);
-					}
-					System.out.println("wrote to file");
-					writer.close();
-
-				} catch (IOException e) {
-					System.err.println("Was not able to write to file: " + e.getMessage());
+				if(file.contains("2008")){
+					parse2008(header, scanner);
+				}
+				else if(file.contains("2009")){
+					parse2009(header, scanner);
+				}
+				else {
+					parseOther(header, scanner);
 				}
 				scanner.close();
 			}
 			catch(FileNotFoundException e){
 				if(e.getMessage().startsWith("2014")){
 					System.out.println("2014 not present.");
-					return;
 				}
 				else {
 					System.err.println("" + e.getMessage());
 				}
 			}
+		}
+		Writer writer;
+		try {
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("convertedData.js")));
+			total = total.substring(0,  total.length()-3);
+			total = total + "];";
+			writer.write(total);
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -88,29 +84,28 @@ public class Parser {
 	 * @param scanner
 	 * @param writer
 	 */
-	private void parse2008(Scanner scanner, Writer writer) {
+	private void parse2008(String header, Scanner scanner) {
 		String line = "";
-		while(scanner.hasNextLine()){	
+		while(scanner.hasNextLine()){
 			line = scanner.nextLine();
 			Scanner lineScanner = new Scanner(line);
 			lineScanner.useDelimiter(",");
 
 			String round = lineScanner.next();
-			
 			String dateOrBye = lineScanner.next();
-			
-			if(dateOrBye.startsWith("BYES: ")){
+			if(dateOrBye.startsWith("BYES:")){
 				String [] teams = dateOrBye.split(" and ");
 				String teamA = teams[0];
 				String teamB = teams[1];
-				String newTeamA = teamA.replace("BYES: ", "");
-				line = String.format("BYE,%s,%s,%s",round, newTeamA, teamB);
+				String newTeamA = teamA.replace("BYES: ","");
+				line = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",round,"BYE","null"," ",newTeamA,"null","null",teamB," ");
+				line = formatAsJSON(header, line);
+
 			}
 			else {
-				lineScanner.next();							//skip the time, throw away
+				lineScanner.next(); //skip the time, throw away
 				String homeTeam = lineScanner.next();
 				String oldScore = lineScanner.next();
-				
 				//System.out.println("preScore " + oldScore);
 				String awayTeam = lineScanner.next();
 				String oldVenue = lineScanner.next();
@@ -122,25 +117,49 @@ public class Parser {
 				String day = dateInfo[0];
 				String dayNumber = dateInfo[1];
 				String month = dateInfo[2];
-								
 				//Scores
-				String[] score = oldScore.split("–|-");	
-				
+				String[] score = oldScore.split("â€“|-|–");
 				String homeScore = score[0];
 				String awayScore = score[1];
-								
 				String venue = oldVenue.replace("\"", "");
-				
 				//Output stage
 				line = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", round, day, dayNumber, month, homeTeam, homeScore, awayScore, awayTeam, venue);
+
+				line = formatAsJSON(header, line);
 			}
-			try {
-				writer.write(line + "\n");
-			} catch (IOException e) {
-				e.printStackTrace();
-				throw new RuntimeException("Couldn't print the line");
+			line = line.concat(",");
+			System.out.println(line);
+			total = total + line;
+		}
+		//try {
+			total = total.substring(0, total.length()-1);
+			total = total + "],\n[";
+			//writer.write(total);
+		//} catch (IOException e) {
+		//	e.printStackTrace();
+		//}
+	}
+
+	private String formatAsJSON(String header, String line) {
+		String newString = "";
+		header = header.replace("\n", "");
+		line = line.replace("\n", "");
+		String [] newHeader = header.split(",");
+		String [] newLine = line.split(",");
+
+		newString = newString.concat("{\n");
+		for(int i = 0; i < newHeader.length; ++i){
+			newString = newString.concat("\t\"" + newHeader[i] + "\":\"" + newLine[i] + "\"");
+			if(i == newHeader.length-1){
+			}
+			else {
+				newString = newString.concat(",\n");
 			}
 		}
+		newString = newString.concat("\n}");
+		//go back and overwrite that last comma
+
+		return newString;
 	}
 
 	/**
@@ -148,9 +167,9 @@ public class Parser {
 	 * @param scanner
 	 * @param writer
 	 */
-	private void parse2009(Scanner scanner, Writer writer) {
+	private void parse2009(String header, Scanner scanner) {
 		String line = "";
-		while(scanner.hasNextLine()){	
+		while(scanner.hasNextLine()){
 			line = scanner.nextLine();
 			Scanner lineScanner = new Scanner(line);
 			lineScanner.useDelimiter(",");
@@ -164,43 +183,49 @@ public class Parser {
 				String teamA = teams[0];
 				String teamB = teams[1];
 				String newTeamA = teamA.replace("BYES: ", "");
-				line = String.format("BYE,%s,%s,%s",round, newTeamA, teamB);
+				line = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",round,"BYE","null"," ",newTeamA,"null","null",teamB," ");
+				line = formatAsJSON(header, line);
+
 			}
 			else {
-				lineScanner.next();	//throw away time
+				lineScanner.next();
 				String homeTeam = lineScanner.next();
-				//System.out.println("Hometeam: " + homeTeam);
 				String oldScore = lineScanner.next();
 				String awayTeam = lineScanner.next();
 				String oldVenue = lineScanner.next();
-				//oldVenue = oldVenue.concat(lineScanner.next());
+				
+				if (oldScore.contains("\"")){
+					oldScore = oldScore.split(" ")[0];
+					oldScore = oldScore.substring(1, oldScore.length());
+				}
 
 				//Mutation Stage
-				//Dates				
+				//Dates
 				String [] dateInfo = dateOrBye.split(" ");
 				String day = dateInfo[0].replace("\"", "");;
 				String dayNumber = dateInfo[1];
 				String month = dateInfo[2];
-				
 				//Scores
-				//System.out.println("Round: " + round + ", Oldscore " + oldScore);
-				String[] score = oldScore.split("–|-");	
-				
+				String[] score = oldScore.split("â€“|-|–");
 				String homeScore = score[0];
 				String awayScore = score[1];
-				
 				String venue = oldVenue.replace("\"", "");
 
 				//Output stage
 				line = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", round, day, dayNumber, month, homeTeam, homeScore, awayScore, awayTeam, venue);
-			}
-			try {
-				writer.write(line + "\n");
-			} catch (IOException e) {
-				e.printStackTrace();
-				throw new RuntimeException("Couldn't print the line");
+				line = formatAsJSON(header, line);
+				
+				total = total + line + ",";
 			}
 		}
+		//try {
+			total = total.substring(0, total.length()-1);
+			total = total + "],\n[";
+		//	writer.write(total);
+		//} catch (IOException e) {
+		//	e.printStackTrace();
+		//	throw new RuntimeException("Couldn't print the line");
+		//}
 	}
 
 
@@ -209,9 +234,9 @@ public class Parser {
 	 * @param scanner
 	 * @param writer
 	 */
-	private void parseOther(Scanner scanner, Writer writer) {
+	private void parseOther(String header, Scanner scanner) {
 		String line = "";
-		while(scanner.hasNextLine()){	
+		while(scanner.hasNextLine()){
 			line = scanner.nextLine();
 			Scanner lineScanner = new Scanner(line);
 			lineScanner.useDelimiter(",");
@@ -222,13 +247,13 @@ public class Parser {
 			String dateOrBye = lineScanner.next();
 			//System.out.println("date:" + dateOrBye);
 
-			
 			if(dateOrBye.startsWith("BYES: ")){
 				String [] teams = dateOrBye.split(" and ");
 				String teamA = teams[0];
 				String teamB = teams[1];
 				String newTeamA = teamA.replace("BYES: ", "");
-				line = String.format("BYE,%s,%s,%s",round, newTeamA, teamB);
+				line = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",round,"BYE","null"," ",newTeamA,"null","null",teamB," ");
+				line = formatAsJSON(header, line);
 			}
 			else {
 				String homeTeam = lineScanner.next();
@@ -239,33 +264,31 @@ public class Parser {
 
 				//Mutation Stage
 				String date = dateOrBye.replace("\"", "");
-				
 				String [] dateInfo = dateOrBye.split(" ");
 				String day = dateInfo[0];
 				day = day.replace("\"", "");
 				String dayNumber = dateInfo[1];
 				String month = dateInfo[2];
-				
 				//Scores
 				oldScore = oldScore.replace(" ", "");
-				String[] score = oldScore.split("–|-");	
-				
+				String[] score = oldScore.split("â€“|-|–");
 				String homeScore = score[0];
 				String awayScore = score[1];
-				
 				String venue = oldVenue.replace("\"", "");
-				System.out.println(day);
 				//Output stage
 				line = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", round, day, dayNumber, month, homeTeam, homeScore, awayScore, awayTeam, venue);
-				System.out.println(line);
-			}
-			try {
-				writer.write(line + "\n");
-			} catch (IOException e) {
-				e.printStackTrace();
-				throw new RuntimeException("Couldn't print the line");
+				line = formatAsJSON(header, line);
+				total = total + line + ",";
 			}
 		}
+		//try {
+			total = total.substring(0, total.length()-1);
+			total = total + "],\n[";
+		//	writer.write(total);
+		//} catch (IOException e) {
+		//	e.printStackTrace();
+		//	throw new RuntimeException("Couldn't print the line");
+		//}
 	}
 
 	/**
