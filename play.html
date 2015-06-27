@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="src/js/main.js"> </script>
     <script src="convertedData.js"> </script>
+    <script src="src/js/pie.js"> </script>
     <style>
     
     #barChart div {
@@ -28,13 +29,21 @@
         font-family: sans-serif;
         font-size: 12px;
     }
+
+    body {
+        font: 10px sans-serif;
+    }
+
+    .arc path{
+        stroke: #fff;
+    }
 </style>
 </head>
 
 <body>
 	<div id="topRow">
 
-    	<select id="select" onchange="onFilterDidChange()">
+    	<select id="select" onchange="onFilterDidChange(currentFunc)">
         	<option value="2013">2013</option>
 	        <option value="2012">2012</option>
 	        <option value="2011">2011</option>
@@ -65,225 +74,19 @@
 
     var colors = ["SlateGrey", "#CD7F32", "Silver", "Gold"];
 
-    var data2008 = [{
-        "round": "1",
-        "day": "Saturday",
-        "dayNumber": "5",
-        "month": "April",
-        "homeTeam": "Central Pulse",
-        "homeTeamScore": 33,
-        "awayTeamScore": 50, 
-        "awayTeam": "Melbourne Vixens",
-        "venue": "TSB Bank Arena"
-    }, {
-        "round": "1",
-        "day": "Sunday",
-        "dayNumber": "6",
-        "month": "April",
-        "homeTeam": "Queensland Firebirds",
-        "homeTeamScore": 48,
-        "awayTeamScore": 46,
-        "awayTeam": "West Coast Fever",
-        "venue": "Brisbane Convention & Exhibition Centre"
-    }, {
-        "round": "2",
-        "day": "Sunday",
-        "dayNumber": "13",
-        "month": "April",
-        "homeTeam": "Melbourne Vixens",
-        "homeTeamScore": 62,
-        "awayTeamScore": 52,
-        "awayTeam": "Queensland Firebirds",
-        "venue": "State Netball and Hockey Centre"
-    }];
-
-    var data2009 = [{
-    "round":"1",
-    "day":"Saturday",
-    "dayNumber":"4",
-    "month":"April",
-    "homeTeam":"Southern Steel",
-    "homeTeamScore":"55",
-    "awayTeamScore":"46",
-    "awayTeam":"Central Pulse",
-    "venue":"Stadium Southland"
-  },
-  {
-    "round":"1",
-    "day":"Saturday",
-    "dayNumber":"4",
-    "month":"April",
-    "homeTeam":"Melbourne Vixens",
-    "homeTeamScore":"57",
-    "awayTeamScore":"44",
-    "awayTeam":"West Coast Fever",
-    "venue":"State Netball and Hockey Centre"
-  },
-  {
-    "round":"1",
-    "day":"Monday",
-    "dayNumber":"6",
-    "month":"April",
-    "homeTeam":"Northern Mystics",
-    "homeTeamScore":"38",
-    "awayTeamScore":"51",
-    "awayTeam":"Waikato Bay of Plenty Magic",
-    "venue":"Trusts Stadium"
-    }];
-
-    var data2010 = [{
-    "round":"1",
-    "day":"Saturday",
-    "dayNumber":"20",
-    "month":"March",
-    "homeTeam":"Northern Mystics",
-    "homeTeamScore":55,
-    "awayTeamScore":52,
-    "awayTeam":"Adelaide Thunderbirds",
-    "venue":"Trusts Stadium"
-  },
-  {
-    "round":"1",
-    "day":"Sunday",
-    "dayNumber":"21",
-    "month":"March",
-    "homeTeam":"Queensland Firebirds",
-    "homeTeamScore":47,
-    "awayTeamScore":50,
-    "awayTeam":"New South Wales Swifts",
-    "venue":"Gold Coast Convention and Exhibition Centre"
-  },
-  {
-    "round":"1",
-    "day":"Sunday",
-    "dayNumber":"21",
-    "month":"March",
-    "homeTeam":"Southern Steel",
-    "homeTeamScore":46,
-    "awayTeamScore":44,
-    "awayTeam":"West Coast Fever",
-    "venue":"Stadium Southland"
-  }];
-
-  var data2011 = [{
-    "round":1,
-    "day":"Sunday",
-    "dayNumber":13,
-    "month":"February",
-    "homeTeam":"New South Wales Swifts",
-    "homeTeamScore":60,
-    "awayTeamScore":40,
-    "awayTeam":"Adelaide Thunderbirds",
-    "venue":"State Sports Centre"
-  },
-  {
-    "round":1,
-    "day":"Monday",
-    "dayNumber":14,
-    "month":"February",
-    "homeTeam":"Northern Mystics",
-    "homeTeamScore":51,
-    "awayTeamScore":34,
-    "awayTeam":"Southern Steel",
-    "venue":"Trusts Stadium"
-  },
-  {
-    "round":2,
-    "day":"Saturday",
-    "dayNumber":19,
-    "month":"February",
-    "homeTeam":"Central Pulse",
-    "homeTeamScore":44,
-    "awayTeamScore":54,
-    "awayTeam":"Northern Mystics",
-    "venue":"Te Rauparaha Arena"
-  }];
-
-  var data2012 = [{
-  	  "round":"1",
-    "day":"Saturday",
-    "dayNumber":"31",
-    "month":"March",
-    "homeTeam":"Adelaide Thunderbirds",
-    "homeTeamScore":57,
-    "awayTeamScore":40,
-    "awayTeam":"New South Wales Swifts",
-    "venue":"Netball SA Stadium"
-  },
-  {
-    "round":"1",
-    "day":"Sunday",
-    "dayNumber":"1",
-    "month":"April",
-    "homeTeam":"Queensland Firebirds",
-    "homeTeamScore":42,
-    "awayTeamScore":47,
-    "awayTeam":"Melbourne Vixens",
-    "venue":"Brisbane Convention and Exhibition Centre"
-  },
-  {
-    "round":"1",
-    "day":"Sunday",
-    "dayNumber":"1",
-    "month":"April",
-    "homeTeam":"Northern Mystics",
-    "homeTeamScore":51,
-    "awayTeamScore":47,
-    "awayTeam":"Central Pulse",
-    "venue":"Trusts Stadium"
-  }];
-
-  var data2013 = [{
-  	"round":"1",
-    "day":"Sunday",
-    "dayNumber":"24",
-    "month":"March",
-    "homeTeam":"Queensland Firebirds",
-    "homeTeamScore":68,
-    "awayTeamScore":59,
-    "awayTeam":"Southern Steel",
-    "venue":"Brisbane Convention and Exhibition Centre"
-  },
-  {
-    "round":"1",
-    "day":"Sunday",
-    "dayNumber":"24",
-    "month":"March",
-    "homeTeam":"Adelaide Thunderbirds",
-    "homeTeamScore":49,
-    "awayTeamScore":42,
-    "awayTeam":"Central Pulse",
-    "venue":"Netball SA Stadium"
-  },
-  {
-    "round":"1",
-    "day":"Sunday",
-    "dayNumber":"24",
-    "month":"March",
-    "homeTeam":"Canterbury Tactix",
-    "homeTeamScore":46,
-    "awayTeamScore":69,
-    "awayTeam":"Waikato Bay of Plenty Magic",
-    "venue":"Trafalgar Centre"
-  }];
-
     meow(newData[0].concat(newData[1], newData[2], newData[3], newData[4], newData[5]), teams);
 
-  	var data = data2008;
+    var currentFunc = function(e) {return teamScores(e, teams)};
+    var positiveFunc  = function(e) {return e.wins};
+    var selection = newData[newData.length - 1];
+    var data = currentFunc(selection);
   	/*
 	*  Filters data by season	
   	*/
-    function onFilterDidChange() {
-    	season = $("#select option:selected" ).text();
+    function onFilterDidChange(func) {
+    	selection = newData[$("#select option:selected" ).text()-2008];
 
-    	if(season == 2008) {data  = data2008;}
-    	else if(season == 2009){ data = data2009;}
-    	else if(season == 2010){ data = data2010;}
-    	else if(season == 2011){ data = data2011;}
-    	else if(season == 2012){ data = data2012;}
-    	else { data = data2013;}
-
-    	updateGraph(data);
+    	updateGraph(func(selection));
     }
 
     /*
@@ -298,51 +101,42 @@
 		// add
   		graph.enter().append("div");
   		// update
-  		graph.style("width", function(d) { return x(d.homeTeamScore) + "px"; })	//gets the x value from the scale. get the homescore from here
-			 .text(function(d) { return d.homeTeam; });
+  		graph.style("width", function(d) { return x(positiveFunc(d)) + "px"; })	//gets the x value from the scale. get the homescore from here
+			 .text(function(d) { return d.name + " " + positiveFunc(d); });
 		// remove
 		graph.exit().remove();
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+          // dat.forEach(function(d) {
+          //   d.wins = +d.wins;
+          // });
+
+        var g = svg.selectAll(".arc")
+              .data(pie(data))
+              .enter().append("g")
+              .attr("class", "arc");
+
+          g.append("path")
+              .attr("d", arc)
+              .style("fill", function(d) { return color(positiveFunc(d.data)); });
+
+          g.append("text")
+              .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+              .attr("dy", ".35em")
+              .style("text-anchor", "middle")
+              .text(function(d) { return d.data.name; });
+
+            
+
+
     }
 
-    // FILTERED INFORMATION //--------------------------------------------------------------------------
-
-    //Default team
-    var team = 'Melbourne Vixens';
-    var teamScores = [];
-
-    var numWins = 0;
-    var winningTeams = [];
-
-    /*
-    *  Returns true if the game contains the team
-    */
-    function getTeam(d) {
-    	//Will need to reset this variable elsewhere when the data changes
-    	if(d.homeTeam == team){ teamScores.push(d.homeTeamScore);return true;}
-    	else if(d.awayTeam == team){teamScores.push(d.awayTeamScore); return true;}
-        return false;
-    }
-
-    /*
-    *  Gets the winners from the season.
-    */
-    function getWinners(d){
-    	numWins++;
-    	winners = [];
-    	if(d.homeTeamScore > d.awayTeamScore){ winners.push(d.homeTeam); return true;}
-    	else if(d.homeTeamScore < d.awayTeamScore){ winners.push(d.awayTeam); return true;}
-    	return false; //Can do ties here later
-    }
-    
-    //Get the games specifically involving a certain team
-    teamGames = data.filter(getTeam);
-    winningTeams = data.filter(getWinners);
-
-    //Get the max score from the season for the domain input
-    var maxHomeScore = d3.max(data, function(d) { console.log(d.homeTeamScore); return d.homeTeamScore;} );  //d3.max
-
-    var maxAwayScore = d3.max(data, function(d) { return d.awayTeamScore;} );
-    var maxScore = Math.max(maxHomeScore, maxAwayScore);
+    var maxScore = d3.max(data, positiveFunc);
 
     //line chart //--------------------------------------------------------------------------------------
     var index = 0;
@@ -353,22 +147,17 @@
 
 	//Define the scales
 	var xScale = d3.scale.linear()
-					.domain([0,d3.max(data, function(d) { return d.awayTeamScore})])
+					.domain([0,d3.max(data, positiveFunc)])
 					.range([padding, lineChartWidth - padding * 2]);
 
 	var yScale = d3.scale.ordinal()
-					.domain([0,d3.max(data, function(d) { return d.homeTeamScore})])
+					.domain([0,d3.max(data, positiveFunc)])
 					.range([padding, lineChartWidth - padding * 2]);
 
     //Define the X Axis
     var xAxis = d3.svg.axis()
     	.scale(xScale)
     	.orient("bottom");
-
-    //Create an SVG group Element for the Axis elements and call the xAxis function
-    // var xAxisGroup = svgContainer.append("g")
-    // 	.attr("class", "axis")
-    //     .call(xAxis);
 
     var svgContainer = d3.select("#lineChart")
         .append("svg")
@@ -379,8 +168,8 @@
     var lineFunction = d3.svg.line()
     	//need to add in both hometeam and awayteam scores
 
-        .x(function(d) { return index += 10; })
-        .y(function(d) { return d.homeTeamScore; })
+        .x(function(d) { var temp = index; index += 200/(data.length-1); return temp; })
+        .y(function(d) { return (positiveFunc(d)/maxScore)*200})
         .interpolate("cardinal-open");
 
     var lineGraph = svgContainer.append("path")
@@ -406,22 +195,26 @@
     	.attr("transform", "translate(0," + (lineChartHeight - padding) + ")")
         .call(xAxis);
 
-    onFilterDidChange();
-    	
+    onFilterDidChange(currentFunc);
 
-    // 	var circles = container.selectAll("circle")  //use selectAll
-    // 			.data(data2008)                 
-    // 			.enter()	//since no elements yet
-    // 			.append("circle");
+var width = 960,
+    height = 500,
+    radius = Math.min(width, height) / 2;
 
-    // var circleAttributes = circles
-    // 						.attr("cx", function(){ return (index +=10);})
-    // 						.attr("cy", function(d){
-    // 							console.log(d.homeTeamScore);
-    // 							return d.homeTeamScore;
-    // 						})
-    // 						.attr("r", function(d) {return 5; })
-    // 						.style("fill", "black");
+var color = d3.scale.ordinal()
+    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+var arc = d3.svg.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(0);
+
+var pie = d3.layout.pie()
+    .sort(null)
+    .value(positiveFunc);
+
+
+
+
 </script>
 
 </html>

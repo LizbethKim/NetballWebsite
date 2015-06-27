@@ -17,10 +17,10 @@ function meow(list, list2){
 	// 	printDic(teamScoreList[i]);
 	// 	console.log("\n");
 	// }
-	var homeCourt = homeCourtAdvantage(list, list2);
-	for (var i = 0; i < homeCourt.length; i++){
-		printDic(homeCourt[i]);
-	}
+	// var homeCourt = homeCourtAdvantage(list, list2);
+	// for (var i = 0; i < homeCourt.length; i++){
+	// 	printDic(homeCourt[i]);
+	// }
 	// var interC = interCountry(list, list2);
 	// for (var i = 0; i < interC.length; i++){
 	// 	printDic(interC[i]);
@@ -107,7 +107,7 @@ function teamAddUp(gameList, team){
 	var totalGoals = 0;
 	for (var i = 0; i < gameList.length; i++){
 		if (gameList[i].round === "Bye") continue;
-		if (gameList[i].homeTeam === teamName){
+		if (gameList[i].homeTeam === team.name){
 			totalGoals += gameList[i].homeTeamScore;
 			if (gameList[i].homeTeamScore > gameList[i].awayTeamScore) wins++;
 			else if (gameList[i].homeTeamScore == gameList[i].awayTeamScore) draw++;
