@@ -2,12 +2,12 @@ var teams =
     [ { name: "Pulse",
         region: "Central",
         country: "NZ",
-        blurb: "Central Pulse blurb"
+        blurb: "The Central Pulse are a New Zealand netball team based in Wellington that compete in the trans-Tasman ANZ Championship. The Pulse represent several New Zealand regions in the North and South Islands, from East Cape in the north to Tasman and Marlborough in the south, and were formed as an amalgamation of the Western Flyers and Capital Shakers teams from the National Bank Cup (NBC)."
       },
       { name: "Mystics",
         region: "Northern",
         country: "NZ",
-        blurb: "Northern Mystics blurb"
+        blurb: "The Northern Mystics are a New Zealand netball team based in Auckland that currently compete in the trans-Tasman ANZ Championship. The franchise was formed in 2007 as an amalgamation of two teams from the National Bank Cup – the Northern Force and the Auckland Diamonds – after the competition was retired that year. In 2008, the Mystics joined four other New Zealand franchises in the new ANZ Championship, representing the New Zealand regions of Northland and Auckland."
       },
       { name: "Magic",
         region: "Waikato Bay of Plenty",
@@ -17,36 +17,36 @@ var teams =
       { name: "Tactix",
         region: "Canterbury",
         country: "NZ",
-        blurb: "Canterbury Tactix blurb"
+        blurb: "The Mainland Tactix are a New Zealand netball team based in Christchurch, Canterbury that currently compete in the trans-Tasman ANZ Championship. The team was one of the founding franchises in the National Bank Cup, formerly the premier netball competition in New Zealand (1998–2007), during which the team was known as the Canterbury Flames. After the NBC was retired in 2007, the Flames became a founding franchise of the new trans-Tasman ANZ Championship and changed their name to the 'Tactix'. In 2013 they changed their name to Mainland Tactix from Canterbury Tactix to clearly state what region they are from. The Mainland team represent the New Zealand regions of Canterbury and West Coast."
       },
       { name: "Steel",
         region: "Southern",
         country: "NZ",
-        blurb: "Southern Steel blurb"
+        blurb: "The Southern Steel are a New Zealand netball team based in Invercargill that compete in the trans-Tasman ANZ Championship. The franchise was formed as an amalgamation of two teams from the National Bank Cup, the Dunedin-based Otago Rebels and the Invercargill-based Southern Sting. After the National Bank Cup was retired in 2007, the newly formed Steel joined four other New Zealand franchises in the new ANZ Championship, representing the New Zealand regions of Otago and Southland."
       },
       { name: "Firebirds",
         region: "Queensland",
         country: "AUS",
-        blurb: "Queensland Firebirds blurb"
+        blurb: "The Queensland Firebirds are an Australian netball team based in Brisbane that competes in the trans-Tasman ANZ Championship. The Firebirds were formed as one of the foundation teams of the Commonwealth Bank Trophy (CBT), previously the premier netball league in Australia, which was contested from 1997–2007. After the retirement of the CBT, the Firebirds were one of five Australian franchises to transfer to the ANZ Championship."
       },
       { name: "Swifts",
         region: "New South Whales",
         country: "AUS",
-        blurb: "New South Whales Swifts blurb"
+        blurb: "The New South Wales Swifts are an Australian netball team based in Sydney that compete in the trans-Tasman ANZ Championship. The Swifts were formed in 2007 as an amalgamation of two teams from the Commonwealth Bank Trophy (CBT) – the Sydney Swifts and the Hunter Jaegers. During their first three years in the ANZ Championship, the Swifts have had mixed fortunes, winning the inaugural championship in 2008, finishing second-last in 2009, followed by a minor premiership in 2010. In 2011 they qualified for the finals stages, finishing fourth."
       },
       { name: "Vixens",
         region: "Melbourne",
         country: "AUS",
-        blurb: "Melbourne Vixens blurb"
+        blurb: "The Melbourne Vixens are an Australian netball team in Melbourne that compete in the trans-Tasman ANZ Championship. The team were formed in 2007 as an amalgamation of the Melbourne Phoenix and Melbourne Kestrels from the previous Commonwealth Bank Trophy. In 2014 Bianca Chatfield is the captain with Madison Robinson vice-captain, under head coach Simone McKinnis. Home games are played at Hisense Arena, while the team trains at the State Netball and Hockey Centre, both in Melbourne."
       },
       { name: "Thunderbirds",
         region: "Adelaide",
         country: "AUS",
-        blurb: "Adelaide Thunderbirds blurb"
+        blurb: "The Adelaide Thunderbirds are an Australian netball team based in Adelaide that compete in the trans-Tasman ANZ Championship. The Thunderbirds were formed as one of the foundation teams of the Commonwealth Bank Trophy (CBT), previously the premier netball league in Australia, which was contested from 1997–2007. After the retirement of the CBT, the Thunderbirds were one of five Australian franchises included in the new ANZ Championship. To date, the Thunderbirds have won two CBT titles (1998, 1999) and two ANZ Championship titles (2010, 2013); in addition, they have finished in the top three placings throughout their competitive history."
       },
       { name: "Fever",
         region: "West Coast",
         country: "AUS",
-        blurb: "West Coast Fever blurb"
+        blurb: "The West Coast Fever are an Australian netball team based in Perth that currently compete in the trans-Tasman ANZ Championship. The franchise was one of the foundation teams of the Commonwealth Bank Trophy, formerly the premier domestic league in Australia. They contested every year of the tournament, from 1997–2007, as the Perth Orioles. When the Commonwealth Bank Trophy was retired after 2007, the Orioles were one of five Australian franchises included in the new ANZ Championship. The team was rebranded before the start of the new league's inaugural season, becoming the 'West Coast Fever'."
       }
     ];
