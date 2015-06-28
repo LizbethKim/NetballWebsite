@@ -9,7 +9,6 @@ function teamStandings(){
 	for (var i = 0; i < teams.length; i++){
 		teamList.push({ "name" : teams[i].region + " " + teams[i].name, "points" : 0});
 	}
-	console.log(dataSet.length);
 	for (var i = 0; i < dataSet.length; i++){
 		if (dataSet[i].homeTeamScore > dataSet[i].awayTeamScore) 
 			find(function(e){return e.name === dataSet[i].homeTeam}, teamList).points += 2;
