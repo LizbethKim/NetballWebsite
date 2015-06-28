@@ -243,7 +243,6 @@ width: 50%;
 
 .barchart div {
     text-align: left;
-    /*background-color: rgb(100, 130, 255);*/
     background-color: #c9017b;
     padding: 2px;
     height 20px;
@@ -264,7 +263,7 @@ div.barchart_right {
 }
 
 #leaderBoard tr:nth-child(odd) {
-  background-color: #f0f8ff;
+  background-color: #cfe0ef;
   color: black;
   border-style: solid;
   border-color:  #6fafe0;
