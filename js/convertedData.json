@@ -495,7 +495,7 @@ var newData = [{"year": 2008,
 	"dayNumber":"9",
 	"month":"June",
 	"homeTeam":"West Coast Fever",
-	"homeTeamScore":"draw 33",
+	"homeTeamScore":"33",
 	"awayTeamScore":"16",
 	"awayTeam":"Central Pulse",
 	"venue":"Challenge Stadium"
