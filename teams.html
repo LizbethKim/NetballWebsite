@@ -51,14 +51,15 @@
             <div id="teamAstats">
                 <select id="selectTeam1"
                   onchange="update_team_select(this, ['#selectTeam2'],
-                    '#team1Blurb', '#teamABarChart', 'left')"></select>
+                    '#team1Blurb', '#teamABarChart', 'left', '#teamALogo')"></select>
+                  <div><img alt="" style="width:120px;height:120px;" id="teamALogo"></div>
                   <p id="team1Blurb"></p>
                     <script>
                       select_load_teams_remove(1, "#selectTeam1");
                       update_blurb("#selectTeam1", "#team1Blurb");
+                      update_image("#selectTeam1", "#teamALogo");
                     </script>
             </div>
-          <div> team logo here </div>
           <div id="teamABarChart" class="barchart"> </div>
         </div>
 
@@ -73,14 +74,15 @@
             <div id="teamBstats">
               <select id="selectTeam2"
                 onchange="update_team_select(this, ['#selectTeam1'],
-                    '#team2Blurb', '#teamBBarChart', 'right')"></select>
+                    '#team2Blurb', '#teamBBarChart', 'right', '#teamBLogo')"></select>
+                    <div><img alt="" style="width:120px;height:120px;" id="teamBLogo"></div>
                     <p id="team2Blurb"></p>
               <script>
                   select_load_teams_remove(0, "#selectTeam2");
                   update_blurb("#selectTeam2", "#team2Blurb");
+                  update_image("#selectTeam2", "#teamBLogo");
               </script>
             </div>
-            <div> team logo here</div>
             <div id="teamBBarChart" class="barchart">hp</div>
         </div>
       </div>
