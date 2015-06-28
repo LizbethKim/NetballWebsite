@@ -5,7 +5,11 @@
     <title> Countries </title>
     <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     <script src="js/d3/d3.js" charset="utf-8"></script>
+    <script src="js/convertedData.json"></script>
+    <script src="js/teams.json"></script>
+    <script src="js/functional.js"></script>
     <script src="js/upcomingMatches.js"></script>
+    <script src="js/countries.js"></script>
 </head>
 
 <header>
@@ -24,11 +28,13 @@
 
 <div id="topRowCountries">
   <div id="nzTeam"> 
-    <h2>New Zealand</h2>
+    <h1>New Zealand</h2>
+    <img src="img/nzflag.jpg" width = 150 height = 80 />
     <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+      New Zealand has always been the underdog in the rivalry between Australia and New Zealand but even so,
+      the strong lineups the New Zealand teams have can often bring around a surprising upset.
 
-      <ul class="teamList">
+      <ul class="teamListNz">
         <li> Central Pulse </li>
         <li> Northern Mystics </li>
         <li> Waikato Bay of Plenty Magic </li>
@@ -39,18 +45,20 @@
 
   <div id="countryData">  
     <div id="individualGraphs">
-      <div id="nzGraphs"> chart 1</div>
-      <div id="ausGraphs"> chart 2 </div>
+      <div id="nzGraphs">  </div>
+      <div id="ausGraphs">  </div>
     </div>
     <div id="combinedGraph"></div>
   </div>
 
   <div id="ausTeam">
-    <h2>Australia</h2>
+    <h1>Australia</h2>
+      <img src="img/ausflag.jpg" width = 150 height = 80 />
     <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+      Australia, being the dominant country in most of the head to head matchups against New Zealand fields an
+      incredibly strong roster with superstar teams such as the Adelaide Thunderbirds who won the 2013 season.
       
-      <ul class="teamList"> 
+      <ul class="teamListAus"> 
           <li> Queensland Firebirds </li>
           <li> New South Wales Swifts </li>
           <li> Melbourne Vixens </li>
@@ -62,7 +70,6 @@
 </div>
 
 <div id="otherCombinedGraph">
-  <h2> hi </h2>
 </div>
 
 
