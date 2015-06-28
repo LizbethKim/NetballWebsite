@@ -15,16 +15,16 @@ import java.util.Scanner;
  */
 public class Parser {
 	
-	private String total = "var newData = [[";
+	private String total = "var newData = [";
 
-	private String [] csvFiles = {
-			"2008-Table1.csv",
-			"2009-Table1.csv",
-			"2010-Table1.csv",
-			"2011-Table1.csv",
-			"2012-Table1.csv",
-			"2013-Table1.csv",
-			"2014-Table1.csv"
+	private FileAndYear[] csvFiles = {
+			new FileAndYear("2008-Table1.csv", 2008),
+			new FileAndYear("2009-Table1.csv", 2009),
+			new FileAndYear("2010-Table1.csv", 2010),
+			new FileAndYear("2011-Table1.csv", 2011),
+			new FileAndYear("2012-Table1.csv", 2012),
+			new FileAndYear("2013-Table1.csv", 2013),
+			new FileAndYear("2014-Table1.csv", 2014)
 	};
 
 	/**
@@ -38,18 +38,19 @@ public class Parser {
 	 * Process the results depending on the year
 	 */
 	public void processResults(){
-		for(String file : csvFiles){
+		for(FileAndYear fy : csvFiles){
 			try {
-				Scanner scanner = new Scanner(new File(file));
+				Scanner scanner = new Scanner(new File(fy.filename));
 
 				//Throw away header information
 				scanner.nextLine();
 				String header = "round,day,dayNumber,month,homeTeam,homeTeamScore,awayTeamScore,awayTeam,venue\n";
 
-				if(file.contains("2008")){
+                total += String.format("{\"year\": %d,\n \"data\": [", fy.year);
+				if(fy.year == 2008){
 					parse2008(header, scanner);
 				}
-				else if(file.contains("2009")){
+				else if(fy.year == 2009) {
 					parse2009(header, scanner);
 				}
 				else {
@@ -58,19 +59,15 @@ public class Parser {
 				scanner.close();
 			}
 			catch(FileNotFoundException e){
-				if(e.getMessage().startsWith("2014")){
-					System.out.println("2014 not present.");
-				}
-				else {
-					System.err.println("" + e.getMessage());
-				}
+				System.out.println(fy.filename + " not present.");
 			}
 		}
+
 		Writer writer;
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("convertedData.js")));
 			total = total.substring(0,  total.length()-3);
-			total = total + "];";
+			total = total + "}];";
 			writer.write(total);
 			writer.close();
 		} catch (IOException e) {
@@ -133,7 +130,7 @@ public class Parser {
 		}
 		//try {
 			total = total.substring(0, total.length()-1);
-			total = total + "],\n[";
+			total = total + "]},\n";
 			//writer.write(total);
 		//} catch (IOException e) {
 		//	e.printStackTrace();
@@ -220,7 +217,7 @@ public class Parser {
 		}
 		//try {
 			total = total.substring(0, total.length()-1);
-			total = total + "],\n[";
+			total = total + "]},\n";
 		//	writer.write(total);
 		//} catch (IOException e) {
 		//	e.printStackTrace();
@@ -283,7 +280,7 @@ public class Parser {
 		}
 		//try {
 			total = total.substring(0, total.length()-1);
-			total = total + "],\n[";
+			total = total + "]},\n";
 		//	writer.write(total);
 		//} catch (IOException e) {
 		//	e.printStackTrace();
@@ -299,4 +296,14 @@ public class Parser {
 		new Parser();
 	}
 
+
+    private class FileAndYear {
+        protected String filename;
+        protected int year;
+
+        public FileAndYear(String fn, int y) {
+            this.filename = fn;
+            this.year = y;
+        }
+    }
 }

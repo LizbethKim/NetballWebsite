@@ -1,4 +1,5 @@
-var newData = [[{
+var newData = [{"year": 2008,
+ "data": [{
 	"round":"1",
 	"day":"Saturday",
 	"dayNumber":"5",
@@ -738,8 +739,9 @@ var newData = [[{
 	"awayTeamScore":"56",
 	"awayTeam":"Waikato Bay of Plenty Magic",
 	"venue":"Acer Arena"
-}],
-[{
+}]},
+{"year": 2009,
+ "data": [{
 	"round":"1",
 	"day":"Saturday",
 	"dayNumber":"4",
@@ -1429,8 +1431,9 @@ var newData = [[{
 	"awayTeamScore":"46",
 	"awayTeam":"Adelaide Thunderbirds",
 	"venue":"Hisense Arena"
-}],
-[{
+}]},
+{"year": 2010,
+ "data": [{
 	"round":"1",
 	"day":"Saturday",
 	"dayNumber":"20",
@@ -2120,8 +2123,9 @@ var newData = [[{
 	"awayTeamScore":"42",
 	"awayTeam":"Waikato Bay of Plenty Magic",
 	"venue":"Adelaide Entertainment Centre"
-}],
-[{
+}]},
+{"year": 2011,
+ "data": [{
 	"round":"1",
 	"day":"Sunday",
 	"dayNumber":"13",
@@ -2811,8 +2815,9 @@ var newData = [[{
 	"awayTeamScore":"44",
 	"awayTeam":"Northern Mystics",
 	"venue":"Brisbane Convention & Exhibition Centre"
-}],
-[{
+}]},
+{"year": 2012,
+ "data": [{
 	"round":"1",
 	"day":"Saturday",
 	"dayNumber":"31",
@@ -3502,8 +3507,9 @@ var newData = [[{
 	"awayTeamScore":"41",
 	"awayTeam":"Waikato Bay of Plenty Magic",
 	"venue":"Hisense Arena"
-}],
-[{
+}]},
+{"year": 2013,
+ "data": [{
 	"round":"1",
 	"day":"Sunday",
 	"dayNumber":"24",
@@ -4193,4 +4199,4 @@ var newData = [[{
 	"awayTeamScore":"48",
 	"awayTeam":"Queensland Firebirds",
 	"venue":"Adelaide Entertainment Centre"
-}]];
+}]}];
