@@ -223,3 +223,13 @@ width: 50%;
 .arc path{
     stroke: #fff;
 }
+
+.barchart {
+    margin-left: 10px;
+}
+
+.barchart div {
+    text-align: left;
+    background-color: rgb(100, 130, 255);
+    padding: 2px;
+}
