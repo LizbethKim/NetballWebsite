@@ -38,7 +38,8 @@ function update_blurb(element, blurb) {
 
 // update all other_elements based on the value of element, also set
 // blurb to the blurb for the team selected by element
-function update_team_select(element, other_elements, blurb, graph, pos, logo) {
+function update_team_select(element, other_elements, blurb, graph, pos, logo,
+        linegraph) {
     $.each(other_elements, function(idx, e) {
         var v = $(e).val();
         select_load_teams_sub(element, e);
@@ -47,6 +48,8 @@ function update_team_select(element, other_elements, blurb, graph, pos, logo) {
     update_blurb(element, blurb);
     load_team_bargraph($(element).val(), graph, pos);
     update_image(element, logo);
+    load_team_linegraph($("#selectTeam1").val(),
+            $("#selectTeam2").val(), "#teamABLineGraph");
 }
 
 function update_image(element, logo){
@@ -68,4 +71,55 @@ function get_team_games(year, teamname) {
 function get_team_from_name(teamname) {
     return find(function(e) { return e.name.toLowerCase() === teamname; },
             teams);
+}
+
+// get a years standings
+function year_standings(year) {
+    var data = find(function(e) { return e.year == year; }, newData).data;
+    var make_score = function(acc, e) {
+        if(!acc[e.homeTeam]) acc[e.homeTeam] = 0;
+        if(!acc[e.awayTeam]) acc[e.awayTeam] = 0;
+        if(e.homeTeamScore > e.awayTeamScore)
+            acc[e.homeTeam] += 2;
+        else if(e.homeTeamScore < e.awayTeamScore)
+            acc[e.awayTeam] += 2;
+        else {
+            acc[e.homeTeam] += 1;
+            acc[e.awayTeam] += 1;
+        }
+
+        return acc;
+    };
+    var folded = foldl(make_score, {}, data);
+    var sorted = sort(function(a, b) {
+        return folded[a] > folded[b];
+    }, Object.keys(folded));
+    return foldl(function(acc, e) {
+        if(folded[e] == acc.last)
+            acc.step += 1;
+        else
+            acc.step = 0;
+        acc.dict[e] = acc.count - acc.step;
+        acc.last = folded[e];
+        acc.count += 1;
+        return acc;
+    }, {dict: {}, last: -1, count: 1, step: 0}, sorted).dict;
+}
+
+// get all years standings
+function all_year_standings() {
+    return map(function(e) {
+            return {year: e.year,
+                    standings: year_standings(e.year)
+                   }
+        }, newData);
+}
+
+// returns a list of years and standings for a team
+function team_all_standings(teamname) {
+    return map(function(e) {
+        return { year: e.year,
+                 standing: e.standings[teamname]
+               }
+    }, all_year_standings());
 }
