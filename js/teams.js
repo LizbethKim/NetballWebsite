@@ -50,6 +50,8 @@ function update_team_select(element, other_elements, blurb, graph, pos, logo,
     update_image(element, logo);
     load_team_linegraph($("#selectTeam1").val(),
             $("#selectTeam2").val(), "#teamABLineGraph");
+    load_team_piegraph($("#selectTeam1").val(),
+            $("#selectTeam2").val(), "#teamABPieGraph");
 }
 
 function update_image(element, logo){
@@ -122,4 +124,14 @@ function team_all_standings(teamname) {
                  standing: e.standings[teamname]
                }
     }, all_year_standings());
+}
+
+// called when the year updates
+function year_filter_change() {
+    load_team_bargraph($('#selectTeam1').val(), '#teamABarChart', 'left');
+    load_team_bargraph($('#selectTeam2').val(), '#teamBBarChart', 'right');
+    load_team_linegraph($("#selectTeam1").val(),
+            $("#selectTeam2").val(), "#teamABLineGraph");
+    load_team_piegraph($("#selectTeam1").val(),
+            $("#selectTeam2").val(), "#teamABPieGraph");
 }
