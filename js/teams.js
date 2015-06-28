@@ -1,6 +1,6 @@
 // adds all the years to the given select
 function add_years(element) {
-    $.each(newData.reverse(), function(idx, e) {
+    $.each(newData.slice(0).reverse(), function(idx, e) {
         $(element)
             .append($('<option>', {value: e.year})
                 .text(e.year));
