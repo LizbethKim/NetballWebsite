@@ -48,7 +48,8 @@ function update_team_select(element, other_elements, blurb, graph, pos, logo,
     update_blurb(element, blurb);
     load_team_bargraph($(element).val(), graph, pos);
     update_image(element, logo);
-    load_team_linegraph($(element).val(), linegraph);
+    load_team_linegraph($("#selectTeam1").val(),
+            $("#selectTeam2").val(), "#teamABLineGraph");
 }
 
 function update_image(element, logo){

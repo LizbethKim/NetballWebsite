@@ -67,8 +67,8 @@
 
         <div id="teamAB">
           <div id="teamABstats"></div>
-          <div></div>
-          <div id="teamABBarChart" class="barchart"></div>
+          <div>&nbsp;</div>
+          <div id="teamABLineGraph" class="linegraph">&nbsp;</div>
         </div>
 
         <div id="teamB">
@@ -90,7 +90,7 @@
       </div>
 
     <div class="chart">
-        <!-- <div id="teamABarChart" class="barchart"></div> -->
+        <div id="teamABarChart" class="barchart"></div>
         <script>
             load_team_bargraph($("#selectTeam1").val(), "#teamABarChart",
                     "left");
@@ -102,16 +102,10 @@
                     "right");
         </script>
     </div>
-    <div class="teamRow">
-        <div id="teamALineGraph" class="linegraph"></div>
-        <script>
-            load_team_linegraph($("#selectTeam1").val(), "#teamALineGraph");
-        </script>
-        <div id="teamABLineGraph" class="linegraph"></div>
-        <div id="teamBLineGraph" class="linegraph"></div>
-        <script>
-            load_team_linegraph($("#selectTeam2").val(), "#teamBLineGraph");
-        </script>
-    </div>
+    <script>
+        load_team_linegraph($("#selectTeam1").val(),
+                $("#selectTeam2").val(),
+                "#teamABLineGraph");
+    </script>
 </body>
 </html>
