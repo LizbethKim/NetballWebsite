@@ -1,0 +1,52 @@
+var teams =
+    [ { name: "Pulse",
+        region: "Central",
+        country: "NZ",
+        blurb: "Central Pulse blurb"
+      },
+      { name: "Mystics",
+        region: "Northern",
+        country: "NZ",
+        blurb: "Northern Mystics blurb"
+      },
+      { name: "Magic",
+        region: "Waikato Bay of Plenty",
+        country: "NZ",
+        blurb: "Waikato Bay of Plenty Magic blurb"
+      },
+      { name: "Tactix",
+        region: "Canterbury",
+        country: "NZ",
+        blurb: "Canterbury Tactix blurb"
+      },
+      { name: "Steel",
+        region: "Southern",
+        country: "NZ",
+        blurb: "Southern Steel blurb"
+      },
+      { name: "Firebirds",
+        region: "Queensland",
+        country: "AUS",
+        blurb: "Queensland Firebirds blurb"
+      },
+      { name: "Swifts",
+        region: "New South Whales",
+        country: "AUS",
+        blurb: "New South Whales Swifts blurb"
+      },
+      { name: "Vixens",
+        region: "Melbourne",
+        country: "AUS",
+        blurb: "Melbourne Vixens blurb"
+      },
+      { name: "Thunderbirds",
+        region: "Adelaide",
+        country: "AUS",
+        blurb: "Adelaide Thunderbirds blurb"
+      },
+      { name: "Fever",
+        region: "West Coast",
+        country: "AUS",
+        blurb: "West Coast Fever blurb"
+      }
+    ];

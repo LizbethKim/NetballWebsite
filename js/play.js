@@ -11,7 +11,7 @@ var teams = [{ name: "Central Pulse", location: "New Zealand"},
 
 var colors = ["SlateGrey", "#CD7F32", "Silver", "Gold"];
 
-meow(newData[0].concat(newData[1], newData[2], newData[3], newData[4], newData[5]), teams);
+// meow(newData[0].concat(newData[1], newData[2], newData[3], newData[4], newData[5]), teams);
 
 var currentFunc = function(e) {return teamScores(e, teams)};
 var positiveFunc  = function(e) {return e.wins};

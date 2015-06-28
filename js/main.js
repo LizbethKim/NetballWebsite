@@ -72,13 +72,13 @@ function interCountry(season, teams){
 
 function interWin(game, team, teams){
 	var match = teamMatch(game, team);
-	if (team.location != filter(teams, function(e) {e.name === match.opponent}).location) return match.teamScore > match.opponentScore;
+	if (team.location != filter(function(e) {e.name === match.opponent}, teams).location) return match.teamScore > match.opponentScore;
 	return false;
 }
 
 function interLose(game, team, teams){
 	var match = teamMatch(game, team);
-	if (team.location != filter(teams, function(e) {e.name === match.opponent}).location) return match.teamScore < match.opponentScore;
+	if (team.location != filter(function(e) {e.name === match.opponent}, teams).location) return match.teamScore < match.opponentScore;
 	return false;
 }
 
@@ -88,7 +88,7 @@ function teamMatch(game, team){
 }
 
 function teamGames(season, team){
-	return filter(season, function(e) {return e.awayTeam === team.name || e.homeTeam === team.name});
+	return filter(function(e) {return e.awayTeam === team.name || e.homeTeam === team.name}, season);
 }
 
 function teamScores(season, teams){
@@ -127,20 +127,11 @@ function calcPoints (wins, draw, loss){
 }
 
 function isNZ(teams){
-	return filter(teams, function (e) {return e.location === "New Zealand"});
+	return filter(function (e) {return e.location === "New Zealand"}, teams);
 }
 
 function isAus(teams){
-	return filter(teams, function (e) {return e.location === "Australia"});
-}
-
-function filter (list, func) {
-	var ret = [];
-	for (var i = 0; i < list.length; i++){
-		if (func(list[i]))
-			ret.push(list[i]);
-	}
-	return ret;
+	return filter(function (e) {return e.location === "Australia"}, teams);
 }
 
 function containsPrime (list, list2, func) {
