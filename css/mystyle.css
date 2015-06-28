@@ -2,13 +2,13 @@
  header {
   background-color: white;
     /*background: linear-gradient(gray, #272B30);*/
-    color:steelblue;
+    color:#0295da;
     height:60px;
 }
 
 body {
   margin: 0px;
-  background-color: steelblue;
+  background-color: #0295da;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
   position: relative;
   background-size: 100%;
@@ -65,14 +65,14 @@ ul#menu li a {
     color: #272B30;
     border-radius: 3px 3px 3px 3px;
     border-width: 1px;
-    border-color: steelblue;
+    border-color: #0295da;
     cursor: pointer; cursor: hand;
 }
 
 ul#menu li a:hover {
     color: white;
     /*background: linear-gradient(steelblue, white);*/
-    background-color: steelblue;
+    background-color: #c9017b;
     cursor: pointer; cursor: hand;
 }
 /*navigation end */
@@ -243,7 +243,8 @@ width: 50%;
 
 .barchart div {
     text-align: left;
-    background-color: rgb(100, 130, 255);
+    /*background-color: rgb(100, 130, 255);*/
+    background-color: #c9017b;
     padding: 2px;
     height 20px;
 }
