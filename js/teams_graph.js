@@ -18,14 +18,19 @@ function load_team_bargraph(teamname, target, position) {
             our_score = e.awayTeamScore;
         }
 
-        if(our_score > their_score)
+        if(our_score === "null") return acc;
+        if(our_score.startsWith("draw") ||
+                their_score.startsWith("draw")) {
+            acc.draws +=1 ;
+            if(our_score.startsWith("draw"))
+                our_score = our_score.slice(4, our_score.length);
+            if(their_score.startsWith("draw"))
+                their_score = their_score.slice(4, their_score.length);
+        }else if(our_score > their_score)
             acc.wins += 1;
         else if(our_score < their_score)
             acc.losses += 1;
-        else
-            acc.draws +=1 ;
-        if(our_score !== "null")
-            acc.total_points += parseInt(our_score, 10);
+        acc.total_points += parseInt(our_score, 10);
         return acc;
     };
     var stats = foldl(count_stats, empty_acc, games);

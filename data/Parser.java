@@ -115,8 +115,6 @@ public class Parser {
 				String dayNumber = dateInfo[1];
 				String month = dateInfo[2];
 				//Scores
-                if(oldScore.contains(" "))
-                    oldScore = oldScore.split(" ")[1];
 				String[] score = oldScore.split("â€“|-|–");
 				String homeScore = score[0];
 				String awayScore = score[1];
