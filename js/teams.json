@@ -12,7 +12,7 @@ var teams =
       { name: "Magic",
         region: "Waikato Bay of Plenty",
         country: "NZ",
-        blurb: "The Waikato Bay of Plenty Magic [1] are a New Zealand netball team based in Hamilton that currently compete in the trans-Tasman ANZ Championship. The franchise was formed in 1999 during the Coca-Cola Cup (later the National Bank Cup) as an amalgamation of two teams from the inaugural season, the Waikato Wildcats and the Bay of Plenty Magic. After the National Bank Cup was retired in 2007, the Magic joined four other New Zealand franchises in the new ANZ Championship, representing the New Zealand regions of the Waikato and the Bay of Plenty."
+        blurb: "The Waikato Bay of Plenty Magic are a New Zealand netball team based in Hamilton that currently compete in the trans-Tasman ANZ Championship. The franchise was formed in 1999 during the Coca-Cola Cup (later the National Bank Cup) as an amalgamation of two teams from the inaugural season, the Waikato Wildcats and the Bay of Plenty Magic. After the National Bank Cup was retired in 2007, the Magic joined four other New Zealand franchises in the new ANZ Championship, representing the New Zealand regions of the Waikato and the Bay of Plenty."
       },
       { name: "Tactix",
         region: "Canterbury",
