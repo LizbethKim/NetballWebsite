@@ -30,7 +30,7 @@ var teams =
         blurb: "The Queensland Firebirds are an Australian netball team based in Brisbane that competes in the trans-Tasman ANZ Championship. The Firebirds were formed as one of the foundation teams of the Commonwealth Bank Trophy (CBT), previously the premier netball league in Australia, which was contested from 1997–2007. After the retirement of the CBT, the Firebirds were one of five Australian franchises to transfer to the ANZ Championship."
       },
       { name: "Swifts",
-        region: "New South Whales",
+        region: "New South Wales",
         country: "AUS",
         blurb: "The New South Wales Swifts are an Australian netball team based in Sydney that compete in the trans-Tasman ANZ Championship. The Swifts were formed in 2007 as an amalgamation of two teams from the Commonwealth Bank Trophy (CBT) – the Sydney Swifts and the Hunter Jaegers. During their first three years in the ANZ Championship, the Swifts have had mixed fortunes, winning the inaugural championship in 2008, finishing second-last in 2009, followed by a minor premiership in 2010. In 2011 they qualified for the finals stages, finishing fourth."
       },
