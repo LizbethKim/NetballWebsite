@@ -32,7 +32,7 @@ color: white;
 p {
 color: white;
     margin-left: 40px;
-    font-size: 12pt;
+    font-size: 11pt;
 }
  /*General End*/
 
@@ -142,13 +142,26 @@ width: 50%;
 }
 
 /* teams.html */
-
+/*the blurbs, etc*/
 .teamRow > div {         /* > means it affects all it's children objects */
   float:left;
-  width: 33%;
-  height: 500px;
+  width: 30%;
+  padding: 10px;
+  /*height: 500px;*/
   text-align: center;
+  
 }
+
+.teamRow > div > div:first-child {
+  overflow: auto;
+  height: 300px;
+}
+
+/*#teamA,
+#teamB {
+  height: 300px;
+  overflow: auto;
+}*/
 
 #otherCombinedGraph {
   float:bottom;
