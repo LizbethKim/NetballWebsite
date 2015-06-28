@@ -34,11 +34,9 @@ color: white;
     margin-left: 40px;
     font-size: 15pt;
 }
-
  /*General End*/
 
 /* Navigation */
-
 #nav01 {
   position: absolute;
     left: 45px;
@@ -76,11 +74,10 @@ ul#menu li a:hover {
     /*background: linear-gradient(steelblue, white);*/
     background-color: steelblue;
     cursor: pointer; cursor: hand;
-
 }
+/*navigation end */
 
 /* index.html */
-
 #topRow > div {         /* > means it affects all it's children objects */
   float:left;
   width: 33%;
@@ -95,22 +92,9 @@ height: 200px;
 width: 50%;
  text-align: center;
 }
-
-#bottomRow > div:first-child {
-width: 50%;
-    font-color: white;
-}
-
-/*
-#bottomRow > div:first-child {
-  width: 50%;
-  font-color: white;
-  text-align: center;
-}
-*/
+/* index.html end*/
 
 /* countries.html */
-
 #topRowCountries > div {        
   float:left;
   width: 33%;
@@ -159,9 +143,9 @@ width: 50%;
 
 /* teams.html */
 
-#teamRow > div {         /* > means it affects all it's children objects */
+.teamRow > div {         /* > means it affects all it's children objects */
   float:left;
-  width: 50%;
+  width: 33%;
   height: 500px;
   text-align: center;
 }

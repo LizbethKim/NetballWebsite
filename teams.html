@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title> Teams </title>
@@ -7,89 +8,102 @@
     <script src="d3/d3.js" charset="utf-8"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="src/js/main.js"> </script>
-    <script src="convertedData.js"> </script>
-    <script src="src/js/pie.js"> </script>
+    <script src="src/js/main.js">
+    </script>
+    <script src="convertedData.js">
+    </script>
+    <script src="src/js/pie.js">
+    </script>
     <script src="js/play.js"></script>
     <link href="css/play.css" type="text/css" rel="stylesheet" />
-
+</head>
 <header>
-  <div id="logo"><a href="index.html">
-      <img src="img/logo.png" alt="" style="width:80px;height:80px;">
-    </a>
-  </div>
-  <div id="nav01">
-    <ul id="menu">
-      <li><a href="teams.html"> Compare Teams </a></li> 
-      <li><a href="countries.html"> Compare Countries</a></li>
-      
-      <li>
-        <select id="selectYear" onchange="onFilterDidChange(currentFunc)">
-          <option value="2013">2013</option>
-          <option value="2012">2012</option>
-          <option value="2011">2011</option>
-          <option value="2010">2010</option>
-          <option value="2009">2009</option>
-          <option value="2008">2008</option>
-        </select>
-      </li>
-    </ul>
-  </div>
+    <div id="logo">
+        <a href="index.html">
+            <img src="img/logo.png" alt="" style="width:80px;height:80px;">
+        </a>
+    </div>
+
+    <div id="nav01">
+        <ul id="menu">
+            <li><a href="teams.html"> Compare Teams </a>
+            </li>
+            <li><a href="countries.html"> Compare Countries</a>
+            </li>
+
+            <li>
+                <select id="selectYear" onchange="onFilterDidChange(currentFunc)">
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                </select>
+            </li>
+        </ul>
+    </div>
 </header>
 
 <body>
+    <div class="teamRow">
+        <div id="teamA">
+            <div id="teamAstats">
+                <select id="selectTeam1" onchange="filterTeam1(currentFunc)">
+                    <option value="pulse">Central Pulse</option>
+                    <option value="mystics">Northern Mystics</option>
+                    <option value="magic">Waikato Bay of Plenty Magic</option>
+                    <option value="tactix">Canterbury Tactix</option>
+                    <option value="steel">Southern Steel</option>
+                    <option value="firebirds">Queensland Firebirds</option>
+                    <option value="swifts">New South Wales Swifts </option>
+                    <option value="vixens">Melbourne Vixens </option>
+                    <option value="thunderbirds">Adelaide Thunderbirds </option>
+                    <option value="fever">West Coast Fever </option>
+                </select>
+            </div>
+            <p id="teamABlurb">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            </p>
 
-  <div id="teamRow">
-    <div id="teamA"> 
-      <div id="teamAstats">
-          <select id="selectTeam1" onchange="filterTeam1(currentFunc)">
-            <option value="pulse">Central Pulse</option>
-            <option value="mystics">Northern Mystics</option>
-            <option value="magic">Waikato Bay of Plenty Magic</option>
-            <option value="tactix">Canterbury Tactix</option>
-            <option value="steel">Southern Steel</option>
-            <option value="firebirds">Queensland Firebirds</option>
-            <option value="swifts">New South Wales Swifts </option>
-            <option value="vixens">Melbourne Vixens </option>
-            <option value="thunderbirds">Adelaide Thunderbirds </option>
-            <option value="fever">West Coast Fever </option>
-          </select>
+            <div id="team1BarChart">
+                <div id='barChartTeam1'></div>
+                <div id='lineChartTeam1'></div>
+            </div>
         </div>
-        <p id="teamABlurb">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-        </p> 
 
-        <div id="team1BarChart">
- 
-          <div id='barChartTeam1'></div>
-          <div id='lineChartTeam1'></div>
+        <div id="teamAB"><div id="teamABstats"></div></div>
+
+        <div id="teamB">
+            <div id="teamBstats">
+                <select id="selectTeam2" onchange="filterTeam2(currentFunc)">
+                    <option value="pulse">Central Pulse</option>
+                    <option value="mystics">Northern Mystics</option>
+                    <option value="magic">Waikato Bay of Plenty Magic</option>
+                    <option value="tactix">Canterbury Tactix</option>
+                    <option value="steel">Southern Steel</option>
+                    <option value="firebirds">Queensland Firebirds</option>
+                    <option value="swifts">New South Wales Swifts </option>
+                    <option value="vixens">Melbourne Vixens </option>
+                    <option value="thunderbirds">Adelaide Thunderbirds </option>
+                    <option value="fever">West Coast Fever </option>
+                </select>
+            </div>
+            <p id="teamBBlurb">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and sdcrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                <p>
+                    <div id="team2BarChart">
+                        <div id='barChartTeam2'></div>
+                        <div id='lineChartTeam2'></div>
+                    </div>
         </div>
-    </div>
+      </div>
 
-  <div id="teamB">
-    <div id="teamBstats">
-    <select id="selectTeam2" onchange="filterTeam2(currentFunc)">
-            <option value="pulse">Central Pulse</option>
-            <option value="mystics">Northern Mystics</option>
-            <option value="magic">Waikato Bay of Plenty Magic</option>
-            <option value="tactix">Canterbury Tactix</option>
-            <option value="steel">Southern Steel</option>
-            <option value="firebirds">Queensland Firebirds</option>
-            <option value="swifts">New South Wales Swifts </option>
-            <option value="vixens">Melbourne Vixens </option>
-            <option value="thunderbirds">Adelaide Thunderbirds </option>
-            <option value="fever">West Coast Fever </option>
-      </select>
+    <div class="teamRow">
+        <div id="teamABarChart"></div>
+        <div id="teamABBarChart"></div>
+        <div id="teamBBarChart"></div>
     </div>
-    <p id="teamBBlurb">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and sdcrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-     <p>
-        <div id="team2BarChart">
-          <div id='barChartTeam2'></div>
-          <div id='lineChartTeam2'></div>
-        </div>
-    </div>
-</div>
-
 </body>
+
 </html>
