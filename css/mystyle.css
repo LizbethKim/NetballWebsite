@@ -2,13 +2,13 @@
  header {
   background-color: white;
     /*background: linear-gradient(gray, #272B30);*/
-    color:steelblue;
+    color:#0295da;
     height:60px;
 }
 
 body {
   margin: 0px;
-  background-color: steelblue;
+  background-color: #0295da;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
   position: relative;
   background-size: 100%;
@@ -32,7 +32,7 @@ color: white;
 p {
 color: white;
     margin-left: 40px;
-    font-size: 15pt;
+    font-size: 11pt;
 }
  /*General End*/
 
@@ -65,14 +65,14 @@ ul#menu li a {
     color: #272B30;
     border-radius: 3px 3px 3px 3px;
     border-width: 1px;
-    border-color: steelblue;
+    border-color: #0295da;
     cursor: pointer; cursor: hand;
 }
 
 ul#menu li a:hover {
     color: white;
     /*background: linear-gradient(steelblue, white);*/
-    background-color: steelblue;
+    background-color: #c9017b;
     cursor: pointer; cursor: hand;
 }
 /*navigation end */
@@ -142,13 +142,26 @@ width: 50%;
 }
 
 /* teams.html */
-
+/*the blurbs, etc*/
 .teamRow > div {         /* > means it affects all it's children objects */
   float:left;
-  width: 33%;
-  height: 500px;
+  width: 30%;
+  padding: 10px;
+  /*height: 500px;*/
   text-align: center;
+  
 }
+
+.teamRow > div > div:first-child {
+  overflow: auto;
+  height: 300px;
+}
+
+/*#teamA,
+#teamB {
+  height: 300px;
+  overflow: auto;
+}*/
 
 #otherCombinedGraph {
   float:bottom;
@@ -230,7 +243,7 @@ width: 50%;
 
 .barchart div {
     text-align: left;
-    background-color: rgb(100, 130, 255);
+    background-color: #c9017b;
     padding: 2px;
     height 20px;
 }
@@ -245,14 +258,22 @@ div.barchart_right {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
+  padding-left: 3px;
+  text-indent: 2px;
 }
 
 #leaderBoard tr:nth-child(odd) {
-  background-color: #6699FF;
+  background-color: #cfe0ef;
+  color: black;
+  border-style: solid;
+  border-color:  #6fafe0;
 }
 
 #leaderBoard tr:nth-child(even){
-  background-color: #3366FF;
+  background-color: white;
+  color: black;
+  border-style: solid;
+  border-color:  #6fafe0;
 }
 
 #leaderBoard tr td:first-child{
