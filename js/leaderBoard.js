@@ -26,7 +26,6 @@ function teamStandings(){
 
 function populateTable(tableId){
 	$.each(teamStandings(), function(idx, e){
-		console.log(e);
 		var tr = $('<tr>')
 			.append($('<td>').text(e.name));
 		$(tr).append($('<td>').text(e.points));
