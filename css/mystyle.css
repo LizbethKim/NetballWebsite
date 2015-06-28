@@ -232,6 +232,13 @@ width: 50%;
     text-align: left;
     background-color: rgb(100, 130, 255);
     padding: 2px;
+    height 20px;
+}
+
+div.barchart_right {
+    margin: auto 0px auto auto;
+    padding-right: 5px;
+    text-align: right;
 }
 
 #leaderBoard {

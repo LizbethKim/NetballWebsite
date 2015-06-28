@@ -50,7 +50,8 @@
         <div id="teamA">
             <div id="teamAstats">
                 <select id="selectTeam1"
-                  onchange="update_team_select(this, ['#selectTeam2'], '#team1Blurb')"></select>
+                  onchange="update_team_select(this, ['#selectTeam2'],
+                    '#team1Blurb', '#teamABarChart', 'left')"></select>
                   <p id="team1Blurb"></p>
                     <script>
                       select_load_teams_remove(1, "#selectTeam1");
@@ -65,7 +66,8 @@
         <div id="teamB">
             <div id="teamBstats">
               <select id="selectTeam2"
-                onchange="update_team_select(this, ['#selectTeam1'], '#team2Blurb')"></select>
+                onchange="update_team_select(this, ['#selectTeam1'],
+                    '#team2Blurb', '#teamBBarChart', 'right')"></select>
                     <p id="team2Blurb"></p>
               <script>
                   select_load_teams_remove(0, "#selectTeam2");
@@ -78,10 +80,15 @@
     <div class="teamRow">
         <div id="teamABarChart" class="barchart"></div>
         <script>
-            load_team_bargraph($("#selectTeam1").val(), "#teamABarChart");
+            load_team_bargraph($("#selectTeam1").val(), "#teamABarChart",
+                    "left");
         </script>
         <div id="teamABBarChart" class="barchart">ho</div>
         <div id="teamBBarChart" class="barchart">hp</div>
+        <script>
+            load_team_bargraph($("#selectTeam2").val(), "#teamBBarChart",
+                    "right");
+        </script>
     </div>
 </body>
 </html>

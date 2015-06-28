@@ -38,13 +38,14 @@ function update_blurb(element, blurb) {
 
 // update all other_elements based on the value of element, also set
 // blurb to the blurb for the team selected by element
-function update_team_select(element, other_elements, blurb) {
+function update_team_select(element, other_elements, blurb, graph, pos) {
     $.each(other_elements, function(idx, e) {
         var v = $(e).val();
         select_load_teams_sub(element, e);
         $(e).val(v);
     });
     update_blurb(element, blurb);
+    load_team_bargraph($(element).val(), graph, pos);
 }
 
 // get all the games a team has played
