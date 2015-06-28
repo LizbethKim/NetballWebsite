@@ -5,7 +5,7 @@ function foldl(fun, acc, list) {
 }
 
 function map(fun, list) {
-    return foldl(function(acc, e) { return acc.push(fun(e)) }, [], list);
+    return foldl(function(acc, e) { acc.push(fun(e)); return acc }, [], list);
 }
 
 function filter(fun, list) {

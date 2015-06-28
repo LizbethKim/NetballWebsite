@@ -51,7 +51,8 @@
             <div id="teamAstats">
                 <select id="selectTeam1"
                   onchange="update_team_select(this, ['#selectTeam2'],
-                    '#team1Blurb', '#teamABarChart', 'left', '#teamALogo')"></select>
+                    '#team1Blurb', '#teamABarChart', 'left', '#teamALogo',
+                    '#teamALineGraph')"></select>
                   <div><img alt="" style="width:120px;height:120px;" id="teamALogo"></div>
                   <p id="team1Blurb"></p>
                     <script>
@@ -74,7 +75,8 @@
             <div id="teamBstats">
               <select id="selectTeam2"
                 onchange="update_team_select(this, ['#selectTeam1'],
-                    '#team2Blurb', '#teamBBarChart', 'right', '#teamBLogo')"></select>
+                    '#team2Blurb', '#teamBBarChart', 'right', '#teamBLogo',
+                    '#teamBLineGraph')"></select>
                     <div><img alt="" style="width:120px;height:120px;" id="teamBLogo"></div>
                     <p id="team2Blurb"></p>
               <script>
@@ -98,6 +100,17 @@
         <script>
             load_team_bargraph($("#selectTeam2").val(), "#teamBBarChart",
                     "right");
+        </script>
+    </div>
+    <div class="teamRow">
+        <div id="teamALineGraph" class="linegraph"></div>
+        <script>
+            load_team_linegraph($("#selectTeam1").val(), "#teamALineGraph");
+        </script>
+        <div id="teamABLineGraph" class="linegraph"></div>
+        <div id="teamBLineGraph" class="linegraph"></div>
+        <script>
+            load_team_linegraph($("#selectTeam2").val(), "#teamBLineGraph");
         </script>
     </div>
 </body>
