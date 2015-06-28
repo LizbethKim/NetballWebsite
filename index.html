@@ -5,7 +5,12 @@
     <title>Overview</title>
     <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     <script src="js/d3/d3.js" charset="utf-8"></script>
-    <script src="js/upcomingMatches.js"></script>
+    <script src="js/jquery-2.1.3.min.js"> </script>
+    <!-- <script src="js/upcomingMatches.js"></script> -->
+    <script src="js/convertedData.json"></script>
+    <script src="js/teams.json"></script>
+    <script src="js/functional.js"></script>
+    <script src="js/leaderBoard.js"></script>
 
   </head>
 <header>
@@ -28,6 +33,8 @@
 
   <div>
     <h2>Leader Board</h2>  
+    <table id = "leaderBoard"> </table>
+    <script> populateTable("#leaderBoard") </script>
   </div>
 
   <div>

@@ -233,3 +233,27 @@ width: 50%;
     background-color: rgb(100, 130, 255);
     padding: 2px;
 }
+
+#leaderBoard {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+#leaderBoard tr:nth-child(odd) {
+  background-color: #6699FF;
+}
+
+#leaderBoard tr:nth-child(even){
+  background-color: #3366FF;
+}
+
+#leaderBoard tr td:first-child{
+  text-align: left;
+  padding-right: 5px;
+}
+
+#leaderBoard tr td{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
