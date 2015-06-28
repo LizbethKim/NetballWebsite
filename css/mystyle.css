@@ -1,0 +1,200 @@
+  /*General*/
+ header {
+  background-color: #272B30;
+    background: linear-gradient(gray, #272B30);
+    color:white;
+}
+
+body {
+  background-color: #272B30;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
+  position: relative;
+  background-size: 100%;
+}
+
+h1 {
+opacity:1;
+    color: white;
+    margin-left: 40px;
+    font-size: 40pt;
+    font-weight: 400;
+}
+
+h2 {
+color: white;
+    margin-left: 40px;
+    font-size: 20pt;
+}
+
+p {
+color: white;
+    margin-left: 40px;
+    font-size: 15pt;
+}
+
+ /*General End*/
+
+/* Navigation */
+
+#nav01 {
+  position: absolute;
+    left: 45px;
+    top: 15px;
+}
+
+ul#menu {  
+    padding: 20;  
+    margin-bottom: 20px;
+}
+
+ul#menu li {
+    display: inline;  /* spreads the tabs horizontally across */
+    margin-right: 5px;  /* how far apart the tabs are from each other */
+}
+
+ul#menu li a {
+    background-color: #ffffff; /* tabs background color */
+    padding: 31px 20px;
+    text-decoration: none;
+    color: #272B30;
+    border-radius: 3px 3px 3px 3px;
+    cursor: pointer; cursor: hand;
+}
+
+ul#menu li a:hover {
+    color: white;
+    background: linear-gradient(gray, white);
+    cursor: pointer; cursor: hand;
+
+}
+
+/* index.html */
+
+#topRow > div {         /* > means it affects all it's children objects */
+  float:left;
+  width: 33%;
+  height: 400px;
+  text-align: center;
+  overflow: auto;
+}
+
+#bottomRow > div {
+float:left;
+height: 200px;
+width: 50%;
+ text-align: center;
+}
+
+#bottomRow > div:first-child {
+width: 50%;
+    font-color: white;
+}
+
+/*
+#bottomRow > div:first-child {
+  width: 50%;
+  font-color: white;
+  text-align: center;
+}
+*/
+
+/* countries.html */
+
+#topRowCountries > div {        
+  float:left;
+  width: 33%;
+  height: 600px;
+  text-align: center;
+}
+
+#nzTeam {
+  padding: 2px;
+  text-align: center;
+  background-color: gray;
+}
+#ausTeam {
+  padding: 2px;
+  text-align: center;
+  background-color: gray;
+}
+
+#countryData {      
+  padding: 2px;
+  text-align: center;
+  background-color: red;
+}
+
+#nzGraphs{
+  height:300px;
+}
+
+#ausGraphs{
+  height:300px;
+}
+
+#main {
+  position: absolute;
+  left: 800px;
+  top: 500px;
+  width: 85px;
+  text-align: center;
+}
+
+.teamList {
+  display: inline;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+/* teams.html */
+
+#teamRow > div {         /* > means it affects all it's children objects */
+  float:left;
+  width: 50%;
+  height: 500px;
+  text-align: center;
+}
+
+#otherCombinedGraph {
+  float:bottom;
+  height:200px;
+}
+
+.teamList {
+  color: white;
+  margin-left: 40px;
+  font-size: 15pt;
+}
+
+#nzBarChart {
+  background-color: blue;
+  height: 200px;
+}
+
+#ausBarChart {
+  background-color: green;
+  height: 200px;
+}
+
+/* teamlist */
+#pulse {
+  background: linear-gradient(to left,#3894e7, #e7d738);
+}
+
+#mystics {
+  background: linear-gradient(to left,#e52c2c, #2ca9e5);
+}
+
+#magic {
+  background: linear-gradient(to left,#e52c2c, #2ca9e5);
+}
+
+#tactix {
+  background: linear-gradient(to left,#e52c2c, #2ca9e5);
+}
+
+#mystics {
+  background: linear-gradient(to left,#e52c2c, #2ca9e5);
+}
+
+
