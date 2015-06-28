@@ -20,8 +20,19 @@
   </div>
   <div id="nav01">
     <ul id="menu">
-      <li><a href="teams.html"> Compare Teams </a></li>
+      <li><a href="teams.html"> Compare Teams </a></li> 
       <li><a href="countries.html"> Compare Countries</a></li>
+      
+      <li>
+        <select id="selectYear" onchange="onFilterDidChange(currentFunc)">
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+        </select>
+      </li>
     </ul>
   </div>
 </header>
@@ -30,48 +41,52 @@
 
   <div id="teamRow">
     <div id="teamA"> 
-      <h2 id="nzteamName"> Central Pulse </h2>
-        <p>
+      <div id="teamAstats">
+          <select id="selectTeam1" onchange="filterTeam1(currentFunc)">
+            <option value="pulse">Central Pulse</option>
+            <option value="mystics">Northern Mystics</option>
+            <option value="magic">Waikato Bay of Plenty Magic</option>
+            <option value="tactix">Canterbury Tactix</option>
+            <option value="steel">Southern Steel</option>
+            <option value="firebirds">Queensland Firebirds</option>
+            <option value="swifts">New South Wales Swifts </option>
+            <option value="vixens">Melbourne Vixens </option>
+            <option value="thunderbirds">Adelaide Thunderbirds </option>
+            <option value="fever">West Coast Fever </option>
+          </select>
+        </div>
+        <p id="teamABlurb">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-
-        <ul class="teamList">
-          <li><div id="centralPulse" onclick=""> Central Pulse </div></li>  <!-- show data for this team on click-->
-          <li> Northern Mystics </li>
-          <li> Waikato Bay of Plenty Magic </li>
-          <li> Canterbury Tactix </li>
-          <li> Southern Steel </li>
         </p> 
 
-        <div id="nzBarChart">
-          <select id="select" onchange="onFilterDidChange(currentFunc)">
-            <option value="2013">2013</option>
-            <option value="2012">2012</option>
-            <option value="2011">2011</option>
-            <option value="2010">2010</option>
-            <option value="2009">2009</option>
-            <option value="2008">2008</option>
-          </select>
-          <div id='barChart'></div>
-          <div id='lineChart'></div>
+        <div id="team1BarChart">
+ 
+          <div id='barChartTeam1'></div>
+          <div id='lineChartTeam1'></div>
         </div>
     </div>
 
-  
-
   <div id="teamB">
-    <h2 id="austeamName"> Queensland Firebirds </h2>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-      
-      <ul class="teamList"> 
-          <li> Queensland Firebirds </li>
-          <li> New South Wales Swifts </li>
-          <li> Melbourne Vixens </li>
-          <li> Adelaide Thunderbirds </li>
-          <li> West Coast Fever </li>
-      </ui>
+    <div id="teamBstats">
+    <select id="selectTeam2" onchange="filterTeam2(currentFunc)">
+            <option value="pulse">Central Pulse</option>
+            <option value="mystics">Northern Mystics</option>
+            <option value="magic">Waikato Bay of Plenty Magic</option>
+            <option value="tactix">Canterbury Tactix</option>
+            <option value="steel">Southern Steel</option>
+            <option value="firebirds">Queensland Firebirds</option>
+            <option value="swifts">New South Wales Swifts </option>
+            <option value="vixens">Melbourne Vixens </option>
+            <option value="thunderbirds">Adelaide Thunderbirds </option>
+            <option value="fever">West Coast Fever </option>
+      </select>
+    </div>
+    <p id="teamBBlurb">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and sdcrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
      <p>
-        <div id="ausBarChart">
+        <div id="team2BarChart">
+          <div id='barChartTeam2'></div>
+          <div id='lineChartTeam2'></div>
         </div>
     </div>
 </div>

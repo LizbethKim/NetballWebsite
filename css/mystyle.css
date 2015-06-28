@@ -1,15 +1,18 @@
   /*General*/
  header {
-  background-color: #272B30;
-    background: linear-gradient(gray, #272B30);
-    color:white;
+  background-color: white;
+    /*background: linear-gradient(gray, #272B30);*/
+    color:steelblue;
+    height:60px;
 }
 
 body {
-  background-color: #272B30;
+  margin: 0px;
+  background-color: steelblue;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
   position: relative;
   background-size: 100%;
+
 }
 
 h1 {
@@ -39,12 +42,17 @@ color: white;
 #nav01 {
   position: absolute;
     left: 45px;
-    top: 15px;
+    top: 5px;
+}
+
+#teamLogos {
+  float:right;
 }
 
 ul#menu {  
-    padding: 20;  
-    margin-bottom: 20px;
+  padding: 0px; 
+  padding-left: 40px; 
+  margin-bottom: 10px;
 }
 
 ul#menu li {
@@ -54,16 +62,19 @@ ul#menu li {
 
 ul#menu li a {
     background-color: #ffffff; /* tabs background color */
-    padding: 31px 20px;
+    padding: 5px 5px;
     text-decoration: none;
     color: #272B30;
     border-radius: 3px 3px 3px 3px;
+    border-width: 1px;
+    border-color: steelblue;
     cursor: pointer; cursor: hand;
 }
 
 ul#menu li a:hover {
     color: white;
-    background: linear-gradient(gray, white);
+    /*background: linear-gradient(steelblue, white);*/
+    background-color: steelblue;
     cursor: pointer; cursor: hand;
 
 }
@@ -197,4 +208,34 @@ width: 50%;
   background: linear-gradient(to left,#e52c2c, #2ca9e5);
 }
 
+#teamAstats,
+#teamBstats {
+  padding-top: 15px;
+}
 
+
+/* bar chart */
+
+#barChart div {
+    font: 10px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    /*padding: 3px;*/
+    margin: 1px;
+    color: white;
+}
+
+.axis path,
+.axis line{
+    fill: none;
+    stroke: #000;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.arc path{
+    stroke: #fff;
+}
