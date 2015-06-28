@@ -36,6 +36,8 @@ function update_blurb(element, blurb) {
     $(blurb).text(elem.blurb);
 }
 
+// update all other_elements based on the value of element, also set
+// blurb to the blurb for the team selected by element
 function update_team_select(element, other_elements, blurb) {
     $.each(other_elements, function(idx, e) {
         var v = $(e).val();
@@ -43,4 +45,21 @@ function update_team_select(element, other_elements, blurb) {
         $(e).val(v);
     });
     update_blurb(element, blurb);
+}
+
+// get all the games a team has played
+function get_team_games(year, teamname) {
+    var data_list = find(function(e) { return e.year == year; }, newData).data;
+    var team = get_team_from_name(teamname);
+    var fullname = team.region + " " + team.name;
+    return filter(function(e){
+            return e.homeTeam === fullname || e.awayTeam === fullname;
+        }, data_list);
+
+}
+
+// returns the team object from the name
+function get_team_from_name(teamname) {
+    return find(function(e) { return e.name.toLowerCase() === teamname; },
+            teams);
 }

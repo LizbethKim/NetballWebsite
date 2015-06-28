@@ -25,3 +25,19 @@ function find(fun, list) {
             return list[i];
     return undefined;
 }
+
+function sort(less_than_fun, list) {
+    var sorter = function(acc, e) {
+        var head = [];
+        var i;
+        for(i = 0; i < acc.length; i++) {
+            if(less_than_fun(e, acc[i]))
+                break;
+            head.push(acc[i]);
+        }
+        head.push(e);
+        return head.concat(acc.splice(i, acc.length));
+    }
+
+    return foldl(sorter, [], list);
+}
