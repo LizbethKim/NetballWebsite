@@ -34,14 +34,8 @@
         <li><a href="countries.html"> Countries</a></li>
 
         <li>
-          <select id="selectYear" onchange="year_filter_change()">
-            <option value="2013">2013</option>
-            <option value="2012">2012</option>
-            <option value="2011">2011</option>
-            <option value="2010">2010</option>
-            <option value="2009">2009</option>
-            <option value="2008">2008</option>
-          </select>
+          <select id="selectYear" onchange="year_filter_change()"></select>
+          <script>add_years("#selectYear")</script>
         </li>
       </ul>
     </div>

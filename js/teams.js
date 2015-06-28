@@ -1,3 +1,11 @@
+// adds all the years to the given select
+function add_years(element) {
+    $.each(newData.reverse(), function(idx, e) {
+        $(element)
+            .append($('<option>', {value: e.year})
+                .text(e.year));
+    });
+}
 // load all of the teams stored in LIST into $(element)
 function populate_team_select(element, list) {
     $(element).empty();
