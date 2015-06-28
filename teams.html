@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title> Teams </title>
@@ -43,41 +44,47 @@
       </ul>
     </div>
   </header>
+    <div class="teamRow">
+        <div id="teamA">
+            <div id="teamAstats">
+                <select id="selectTeam1"
+                  onchange="update_team_select(this, ['#selectTeam2'], '#team1Blurb')"></select>
+                  <p id="team1Blurb"></p>
+                    <script>
+                      select_load_teams_remove(1, "#selectTeam1");
+                      update_blurb("#selectTeam1", "#team1Blurb");
+                    </script>
+            </div>
 
-  <div id="teamRow">
-    <div id="teamA"> 
-      <div id="teamAstats">
-            <select id="selectTeam1"
-                onchange="update_team_select(this, ['#selectTeam2'], '#team1Blurb')"></select>
+            <div id="team1BarChart">
+                <div id='barChartTeam1'></div>
+                <div id='lineChartTeam1'></div>
+            </div>
         </div>
-        <p id="team1Blurb"></p>
-        <script>
-            select_load_teams_remove(1, "#selectTeam1");
-            update_blurb("#selectTeam1", "#team1Blurb");
-        </script>
 
-        <div id="team1BarChart">
-          <div id='barChartTeam1'></div>
-          <div id='lineChartTeam1'></div>
+        <div id="teamAB"><div id="teamABstats"></div>ho</div>
+
+        <div id="teamB">
+            <div id="teamBstats">
+              <select id="selectTeam2"
+                onchange="update_team_select(this, ['#selectTeam1'], '#team2Blurb')"></select>
+                    <p id="team2Blurb"></p>
+              <script>
+                  select_load_teams_remove(0, "#selectTeam2");
+                  update_blurb("#selectTeam2", "#team2Blurb");
+              </script>
+            </div>
+                    <div id="team2BarChart">
+                        <div id='barChartTeam2'></div>
+                        <div id='lineChartTeam2'></div>
+                    </div>
         </div>
-    </div>
+      </div>
 
-  <div id="teamB">
-    <div id="teamBstats">
-        <select id="selectTeam2"
-            onchange="update_team_select(this, ['#selectTeam1'], '#team2Blurb')"></select>
+    <div class="teamRow">
+        <div id="teamABarChart">hi</div>
+        <div id="teamABBarChart">ho</div>
+        <div id="teamBBarChart">hp</div>
     </div>
-    <p id="team2Blurb"></p>
-    <script>
-        select_load_teams_remove(0, "#selectTeam2");
-        update_blurb("#selectTeam2", "#team2Blurb");
-    </script>
-        <div id="team2BarChart">
-          <div id='barChartTeam2'></div>
-          <div id='lineChartTeam2'></div>
-        </div>
-    </div>
-</div>
-
 </body>
 </html>
