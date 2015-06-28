@@ -150,6 +150,7 @@ width: 50%;
   /*height: 500px;*/
   text-align: center;
   
+<<<<<<< HEAD
 }
 
 .teamRow > div > div:first-child {
@@ -157,6 +158,15 @@ width: 50%;
   height: 300px;
 }
 
+=======
+}
+
+.teamRow > div > div:first-child {
+  overflow: auto;
+  height: 300px;
+}
+
+>>>>>>> bf47a6e9a2ff9b4c48ec19d6f53d0ce21e48eb62
 /*#teamA,
 #teamB {
   height: 300px;
