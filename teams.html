@@ -30,8 +30,8 @@
     </div>
     <div id="nav01">
       <ul id="menu">
-        <li><a href="teams.html"> Compare Teams </a></li>
-        <li><a href="countries.html"> Compare Countries</a></li>
+        <li><a href="teams.html"> Teams </a></li>
+        <li><a href="countries.html"> Countries</a></li>
 
         <li>
           <select id="selectYear" onchange="onFilterDidChange(currentFunc)">
@@ -57,10 +57,16 @@
                       update_blurb("#selectTeam1", "#team1Blurb");
                     </script>
             </div>
-
+          <div> asdfasdf </div>
+          <div id="teamABarChart" class="barchart"></div>
         </div>
 
-        <div id="teamAB"><div id="teamABstats"></div>ho</div>
+
+        <div id="teamAB">
+          <div id="teamABstats"></div>
+          <div>ho</div>
+          <div id="teamABBarChart" class="barchart">ho</div>
+        </div>
 
         <div id="teamB">
             <div id="teamBstats">
@@ -72,16 +78,18 @@
                   update_blurb("#selectTeam2", "#team2Blurb");
               </script>
             </div>
+            <div>asdad</div>
+            <div id="teamBBarChart" class="barchart">hp</div>
         </div>
       </div>
 
-    <div class="teamRow">
-        <div id="teamABarChart" class="barchart"></div>
+    <div class="chart">
+        <!-- <div id="teamABarChart" class="barchart"></div> -->
         <script>
             load_team_bargraph($("#selectTeam1").val(), "#teamABarChart");
         </script>
-        <div id="teamABBarChart" class="barchart">ho</div>
-        <div id="teamBBarChart" class="barchart">hp</div>
+        <!-- <div id="teamABBarChart" class="barchart">ho</div> -->
+        <!-- <div id="teamBBarChart" class="barchart">hp</div> -->
     </div>
 </body>
 </html>
