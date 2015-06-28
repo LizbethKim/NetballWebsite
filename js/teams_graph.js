@@ -1,3 +1,5 @@
+var svg_namespace = "http://www.w3.org/2000/svg";
+
 // produce a bargraph for the given team, written to the innerHTML of target
 function load_team_bargraph(teamname, target, position) {
     var team = get_team_from_name(teamname);
@@ -58,4 +60,152 @@ function load_team_bargraph(teamname, target, position) {
                 return (d.value * 20) + "px";
         })
         .text(function(d) { return d.name + ": " + d.value; });
+}
+
+
+// produce a line graph, written to the innerHTML of target
+function load_team_linegraph(teamname1, teamname2, target) {
+    var team1 = get_team_from_name(teamname1);
+    var team2 = get_team_from_name(teamname2);
+    var fullname1 = team1.region + " " + team1.name;
+    var fullname2 = team2.region + " " + team2.name;
+
+    var margin = {top: 30, right: 20, bottom: 30, left: 50},
+        width = 500 - margin.left - margin.right,
+        height = 270 - margin.top - margin.bottom,
+        key = {top: 10,
+               left: width + margin.right,
+               width: 150};
+    var standings1 = team_all_standings(fullname1);
+    var standings2 = team_all_standings(fullname2);
+
+    var x_tick = width / (standings1.length - 1);
+    var y_max = Math.max(
+        listmax(map(function(e) {
+            return e.standing;
+        }, standings1)),
+        listmax(map(function(e) {
+            return e.standing;
+        }, standings2)));
+    var y_tick = height / y_max;
+
+    $(target).empty();
+    $(target).html($('<h2>', {class: 'bargraph_title'}).text('Standings'));
+    var svg = document.createElementNS(svg_namespace, "svg");
+    $(svg).attr("width", width + margin.left + margin.right + key.width)
+        .attr("height", height + margin.top + margin.bottom);
+    var g = document.createElementNS(svg_namespace, "g");
+    // add global transform
+    $(svg).append($(g).attr("transform", "translate(" + margin.left + ", " +
+                                         margin.top + ")"));
+    // add background rectangle
+    $(g).append($(document.createElementNS(svg_namespace, 'rect'))
+            .attr("width", width)
+            .attr("height", height)
+            .attr("style", "fill: white; opacity: 0.25"));
+
+    // standings1 line
+    $.each(standings1.slice(1, standings1.length), function(idx, v) {
+        $(g).append($(document.createElementNS(svg_namespace, 'line'))
+            .attr("x1", "" + Math.floor(idx * x_tick))
+            .attr("y1", "" + Math.floor(standings1[idx].standing * y_tick - y_tick))
+            .attr("x2", "" + Math.floor((idx + 1) * x_tick))
+            .attr("y2", "" + Math.floor(v.standing * y_tick - y_tick))
+            .attr("style", "stroke: blue; stroke-width: 2;"));
+    });
+
+    // standings2 line
+    $.each(standings2.slice(1, standings2.length), function(idx, v) {
+        $(g).append($(document.createElementNS(svg_namespace, 'line'))
+            .attr("x1", "" + Math.floor(idx * x_tick))
+            .attr("y1", "" + Math.floor(standings2[idx].standing * y_tick - y_tick))
+            .attr("x2", "" + Math.floor((idx + 1) * x_tick))
+            .attr("y2", "" + Math.floor(v.standing * y_tick - y_tick))
+            .attr("style", "stroke: green; stroke-width: 2;"));
+    });
+
+    // x-axis
+    $(g).append($(document.createElementNS(svg_namespace, 'line'))
+            .attr("x1", -1)
+            .attr("y1", height + 1)
+            .attr("x2", width)
+            .attr("y2", height + 1)
+            .attr("style", "stroke: black; stroke-width: 2;"));
+    for(var i = 0; i <= width; i += x_tick) {
+        $(g).append($(document.createElementNS(svg_namespace, 'line'))
+                .attr("x1", i - 1)
+                .attr("y1", height)
+                .attr("x2", i - 1)
+                .attr("y2", height + 5)
+                .attr("style", "stroke: black; stroke-width: 2;"));
+        $(g).append($(document.createElementNS(svg_namespace, 'text'))
+                .attr("x", i - 1)
+                .attr("y", height + 20)
+                .attr("text-anchor", "middle")
+                .attr("fill", "black")
+                .attr("style", "font: Helvetica, Arial, sans-serif")
+                .text(standings1[i/x_tick].year));
+    }
+    // y-axis
+    $(g).append($(document.createElementNS(svg_namespace, 'line'))
+            .attr("x1", -1)
+            .attr("y1", -1)
+            .attr("x2", -1)
+            .attr("y2", height+1)
+            .attr("style", "stroke: black; stroke-width: 2;"));
+    for(var i = 0, count = 1; i <= height; i += y_tick * 2, count += 2) {
+        $(g).append($(document.createElementNS(svg_namespace, 'line'))
+                .attr("x1", 0)
+                .attr("y1", i)
+                .attr("x2", -5)
+                .attr("y2", i)
+                .attr("style", "stroke: black; stroke-width: 2;"));
+        $(g).append($(document.createElementNS(svg_namespace, 'text'))
+                .attr("x", -6)
+                .attr("y", i + 5)
+                .attr("text-anchor", "end")
+                .attr("fill", "black")
+                .attr("style", "font: Helvetica, Arial, sans-serif")
+                .text(count));
+    }
+    // key
+    $(g).append($(document.createElementNS(svg_namespace, 'text'))
+            .attr("x", key.left + key.width / 2)
+            .attr("y", key.top + 20)
+            .attr("text-anchor", "middle")
+            .attr("fill", "black")
+            .attr("style", "font: Helvetica, Arial, sans-serif;" +
+                           "text-decoration: underline;")
+            .text("Key"));
+    // first key
+    $(g).append($(document.createElementNS(svg_namespace, 'rect'))
+            .attr("x", key.left + 5)
+            .attr("y", key.top + 30)
+            .attr("width", "10")
+            .attr("height", "10")
+            .attr("style", "fill: blue;"));
+    $(g).append($(document.createElementNS(svg_namespace, 'text'))
+            .attr("x", key.left + 20)
+            .attr("y", key.top + 40)
+            .attr("text-anchor", "begin")
+            .attr("fill", "black")
+            .attr("style", "font: Helvetica, Arial, sans-serif")
+            .text(fullname1));
+    // second key
+    $(g).append($(document.createElementNS(svg_namespace, 'rect'))
+            .attr("x", key.left + 5)
+            .attr("y", key.top + 50)
+            .attr("width", "10")
+            .attr("height", "10")
+            .attr("style", "fill: green;"));
+    $(g).append($(document.createElementNS(svg_namespace, 'text'))
+            .attr("x", key.left + 20)
+            .attr("y", key.top + 60)
+            .attr("text-anchor", "begin")
+            .attr("fill", "black")
+            .attr("style", "font: Helvetica, Arial, sans-serif")
+            .text(fullname2));
+
+    // add svg to page
+    $(target).append(svg);
 }
