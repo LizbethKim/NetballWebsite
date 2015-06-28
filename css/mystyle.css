@@ -259,14 +259,22 @@ div.barchart_right {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
+  padding-left: 3px;
+  text-indent: 2px;
 }
 
 #leaderBoard tr:nth-child(odd) {
-  background-color: #6699FF;
+  background-color: #f0f8ff;
+  color: black;
+  border-style: solid;
+  border-color:  #6fafe0;
 }
 
 #leaderBoard tr:nth-child(even){
-  background-color: #3366FF;
+  background-color: white;
+  color: black;
+  border-style: solid;
+  border-color:  #6fafe0;
 }
 
 #leaderBoard tr td:first-child{
