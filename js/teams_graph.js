@@ -1,4 +1,5 @@
-function load_team_bargraph(teamname, target) {
+// produce a bargraph for the given team, written to the innerHTML of target
+function load_team_bargraph(teamname, target, position) {
     var team = get_team_from_name(teamname);
     var games = get_team_games(get_year(), teamname);
     var empty_acc = { wins: 0, losses: 0, draws: 0, total_points: 0 };
@@ -25,27 +26,36 @@ function load_team_bargraph(teamname, target) {
         return acc;
     };
     var stats = foldl(count_stats, empty_acc, games);
-    console.log(stats);
+
+    // convert data to list
     var data =
         [ {name: "Wins", value: stats.wins},
-          {name: "Loses", value: stats.losses}
+          {name: "Loses", value: stats.losses},
         ];
     if(stats.draws >  0)
         data.push({name: "Draws", value: stats.draws});
-    data.push({name: "Total Points", value: stats.total_points});
+    data = data.concat(
+        [ {name: "Total Games", value: games.length},
+          {name: "Average Points",
+           value: (stats.total_points / games.length).toFixed(2) },
+          {name: "Total Points", value: stats.total_points}
+        ]);
 
-
+    // draw graph
+    $(target).html($('<h2>', {class: 'bargraph_title'}).text('Statistics'));
     d3.select(target)
         .selectAll("div")
         .data(data)
         .enter()
         .append("div")
+        .classed("barchart_" + position, true)
         .style("width", function(d) {
             if(d.name === "Total Points")
                 return (d.value  / 2.5) + "px";
+            else if(d.name == "Average Points")
+                return (d.value * 4) + "px";
             else
                 return (d.value * 20) + "px";
         })
-        .text(function(d) { return d.name + " " + d.value; });
-    console.log($(target));
+        .text(function(d) { return d.name + ": " + d.value; });
 }
